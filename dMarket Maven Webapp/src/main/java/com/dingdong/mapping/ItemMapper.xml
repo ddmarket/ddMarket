@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dingdong.dao.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.dingdong.pojo.Item" >
+    <id column="item_id" property="item_id" jdbcType="INTEGER" />
+    <result column="classified_id" property="classified_id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="head_pic" property="headPic" jdbcType="VARCHAR" />
+    <result column="repertory" property="repertory" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="instock" property="instock" jdbcType="INTEGER" />
+    <result column="sales" property="sales" jdbcType="INTEGER" />
+    <result column="isRecommend" property="isrecommend" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dingdong.pojo.Item" extends="BaseResultMap" >
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    item_id, classified_id, name, brand, head_pic, repertory, price, instock, sales, 
+     isRecommend
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_item
+    where item_id = #{item_id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findAllItems" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_item
+    order by item_id
+  </select>
+ <select id="findItemsByName" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_item
+     <where>
+    	 <if test="itemName != null" >
+    	 	and name like '%' #{itemName} '%' or introduction like '%' #{itemName} '%'
+    	 </if>
+    </where>
+    order by item_id limit #{page.dbIndex},#{page.dbNumber}
+  </select>
+  
+  <select id="findItemsByNameByOrder" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_item
+    <where>
+    	 <if test="itemName != null" >
+    	 	and name like '%' #{itemName} '%' or introduction like '%' #{itemName} '%'
+    	 </if>
+    </where>
+    
+    order by {orderMethod} limit #{page.dbIndex},#{page.dbNumber}
+  </select>
+   <select id="findItemsByClassifyID" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_item
+    <where>
+    	 <if test="ClassfyID != null" >
+    	 	and classified_id = {ClassfyID}
+    	 </if>
+    </where>
+    order by item_id limit #{page.dbIndex},#{page.dbNumber}
+  </select>
+   <select id="countItem" resultType="int">
+    select count(*)
+    from t_item
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_item
+    where item_id = #{item_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="addItem" parameterType="com.dingdong.pojo.Item" >
+    insert into t_item (item_id, classified_id, name, 
+      brand, head_pic, repertory, 
+      price, instock, sales, isRecommend, introduction
+      )
+    values (#{item_id,jdbcType=INTEGER}, #{classified_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{headPic,jdbcType=VARCHAR}, #{repertory,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{instock,jdbcType=INTEGER}, #{sales,jdbcType=INTEGER}, 
+      #{isrecommend,jdbcType=INTEGER}, #{introduction,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dingdong.pojo.Item" >
+    insert into t_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="item_id != null" >
+        item_id,
+      </if>
+      <if test="classified_id != null" >
+        classified_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="headPic != null" >
+        head_pic,
+      </if>
+      <if test="repertory != null" >
+        repertory,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="instock != null" >
+        instock,
+      </if>
+      <if test="sales != null" >
+        sales,
+      </if>
+      <if test="classified != null" >
+        classified,
+      </if>
+      <if test="isrecommend != null" >
+        isRecommend,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="item_id != null" >
+        #{item_id,jdbcType=INTEGER},
+      </if>
+      <if test="classified_id != null" >
+        #{classified_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="headPic != null" >
+        #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="repertory != null" >
+        #{repertory,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="instock != null" >
+        #{instock,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null" >
+        #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="classified != null" >
+        #{classified,jdbcType=INTEGER},
+      </if>
+      <if test="isrecommend != null" >
+        #{isrecommend,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateItem" parameterType="com.dingdong.pojo.Item" >
+    update t_item
+    <set >
+      <if test="classified_id != null" >
+        classified_id = #{classified_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="headPic != null" >
+        head_pic = #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="repertory != null" >
+        repertory = #{repertory,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="instock != null" >
+        instock = #{instock,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null" >
+        sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="classified != null" >
+        classified = #{classified,jdbcType=INTEGER},
+      </if>
+      <if test="isrecommend != null" >
+        isRecommend = #{isrecommend,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where item_id = #{item_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dingdong.pojo.Item" >
+    update t_item
+    set classified_id = #{classified_id,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      head_pic = #{headPic,jdbcType=VARCHAR},
+      repertory = #{repertory,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      instock = #{instock,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER},
+      classified = #{classified,jdbcType=INTEGER},
+      isRecommend = #{isrecommend,jdbcType=INTEGER},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where item_id = #{item_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dingdong.pojo.Item" >
+    update t_item
+    set classified_id = #{classified_id,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      head_pic = #{headPic,jdbcType=VARCHAR},
+      repertory = #{repertory,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      instock = #{instock,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER},
+      classified = #{classified,jdbcType=INTEGER},
+      isRecommend = #{isrecommend,jdbcType=INTEGER}
+    where item_id = #{item_id,jdbcType=INTEGER}
+  </update>
+</mapper>

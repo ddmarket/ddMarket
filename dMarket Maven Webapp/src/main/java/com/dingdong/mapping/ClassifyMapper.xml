@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dingdong.dao.ClassifyMapper" >
+  <resultMap id="BaseResultMap" type="com.dingdong.pojo.Classify" >
+    <id column="classify_id" property="classify_id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    classify_id, name
+  </sql>
+  <insert id="addClassify" parameterType="com.dingdong.pojo.Classify" >
+    insert into t_classify (classify_id, name)
+    values (#{classify_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <select id="findClassifyByID" parameterType="int" resultType="com.dingdong.pojo.Classify">
+  	 select 
+    <include refid="Base_Column_List" />
+    from t_classify
+    where classify_id = #{value}
+  </select>
+</mapper>
