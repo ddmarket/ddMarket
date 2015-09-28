@@ -1,41 +1,47 @@
 package com.dingdong.mybatis;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
-public class MybatisUtil  {
-	
-    private  static SqlSessionFactory sqlSessionFactory = null;
+public class MybatisUtil {
 
-    //Big Thing
-    public static SqlSessionFactory getSessionFactory() {
-    	  if(sqlSessionFactory != null)
-    		  return sqlSessionFactory;
+	private static SqlSessionFactory sqlSessionFactory = null;
 
-    	  
-    	 
-//			TODO 如何优雅地读取配置文件    	
-//  	    String file = MybatisUtil.class.getClassLoader().getResource("mybatis-config.xml").getFile();
-//  	    String path = MybatisUtil.class.getClassLoader().getResource("mybatis-config.xml").getPath();
-//  	    String sysF = MybatisUtil.class.getClassLoader().getSystemResource("mybatis-config.xml").getFile();
-//  	    System.out.println(file);
-  	    
-  	    //mybatis的配置文件
-    	@SuppressWarnings("static-access")
-		InputStream is  =  MybatisUtil.class.getClassLoader().getSystemResourceAsStream("mybatis-config.xml");
-  	    if (is == null) {
-			is = MybatisUtil.class.getClassLoader().getSystemResourceAsStream("/WEB-INF/classes/mybatis-config.xml");
+	// Big Thing
+	public static SqlSessionFactory getSessionFactory() {
+		if (sqlSessionFactory != null)
+			return sqlSessionFactory;
+		MybatisUtil.class.getClassLoader();
+		// mybatis的配置文件
+		Resource resource = new ClassPathResource("mybatis-config.xml");
+		InputStream is = null;
+		try {
+			is = resource.getInputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-  	    System.out.println("is还是空的吗？");
-  	    System.out.println(is);
-  	    
-  	    SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
-  		return sessionFactory;
-    }
-    
+		if (is == null) {
+			MybatisUtil.class.getClassLoader();
+			is = ClassLoader
+					.getSystemResourceAsStream("/WEB-INF/classes/mybatis-config.xml");
+		}
+		SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder()
+				.build(is);
+//		System.out.println(sessionFactory);
+		return sessionFactory;
+	}
+
+	public static void main(String[] args) {
+		MybatisUtil mybatisUtil = new MybatisUtil();
+		SqlSessionFactory sessionFactory = mybatisUtil.getSessionFactory();
+		
+	}
 }
