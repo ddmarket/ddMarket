@@ -25,7 +25,6 @@ public class MybatisUtil {
 		try {
 			is = resource.getInputStream();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (is == null) {
@@ -35,7 +34,6 @@ public class MybatisUtil {
 		}
 		SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder()
 				.build(is);
-//		System.out.println(sessionFactory);
 		return sessionFactory;
 	}
 

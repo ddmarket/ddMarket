@@ -85,7 +85,7 @@ public class ItemService {
 	public List<Item> findAllItems(Page page) {
 		ItemMapperlmp itemMapper = new ItemMapperlmp();
 		int totalNumber = itemMapper.countItem();
-		System.out.println("totalNumber = "+totalNumber);
+//		System.out.println("totalNumber = "+totalNumber);
 		page.setTotalNumber(totalNumber);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("Page", page);

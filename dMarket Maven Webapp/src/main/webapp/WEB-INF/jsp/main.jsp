@@ -50,7 +50,7 @@
             <div class="dt" style="color:#bbbbbb;">&emsp;<h2>全部商品分类</h2></div>
           </ul>
             <ul class="nav nav-sidebar">
-            <li id="classJy" style="color:red"><a target="_blank" href="list?cl=家用电器" class="a1">家用电器</a></li>           
+            <li id="classJy" style="color:red"><a target="_blank" href="list?classify=1" class="a1">生鲜</a></li>           
           </ul>
           <ul class="nav nav-sidebar">
             <li id="classJy"><a target="_blank" href="list" class="a1">手机、数码产品、电脑、办公</a></li>       
