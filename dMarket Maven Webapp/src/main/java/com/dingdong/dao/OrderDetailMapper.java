@@ -11,7 +11,6 @@ public interface OrderDetailMapper {
 
 	public boolean updateOrderDetail(OrderDetail OrderDetail);
 	
-	
 	//花式查询
 	public OrderDetail findOrderDetailByID(int id);
 

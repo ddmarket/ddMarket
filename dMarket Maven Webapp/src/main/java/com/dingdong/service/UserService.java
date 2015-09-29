@@ -1,8 +1,12 @@
 package com.dingdong.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.dingdong.dao.AdminMapper;
+import com.dingdong.dao.UserMapper;
+import com.dingdong.daoImp.AdminMapperImp;
 import com.dingdong.daoImp.UserMapperlmp;
 import com.dingdong.pojo.User;
 
@@ -14,7 +18,7 @@ public class UserService {
 	 * @return User
 	 */
 	public User login(String userName,String password){
-		UserMapperlmp userMapperlmp = new UserMapperlmp();
+		UserMapper userMapperlmp = new UserMapperlmp();
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("userName", userName);
 		map.put("password", password);
@@ -27,7 +31,7 @@ public class UserService {
 	 * @return
 	 */
 	public boolean register(User u){
-		UserMapperlmp userMapperlmp = new UserMapperlmp();
+		UserMapper userMapperlmp = new UserMapperlmp();
 		int result = userMapperlmp.insert(u);
 		if (result != 0) {
 			return true;
@@ -40,7 +44,7 @@ public class UserService {
 	 * @return
 	 */
 	public boolean update(User u){
-		UserMapperlmp userMapperlmp = new UserMapperlmp();
+		UserMapper userMapperlmp = new UserMapperlmp();
 		int result = userMapperlmp.update(u);
 		if (result != 0) {
 			return true;
@@ -48,6 +52,13 @@ public class UserService {
 		return false;
 	}
 	
+	
+	public List findAllUsers(){
+		List userList = null;
+		UserMapper um = new UserMapperlmp();
+		userList = um.findAllUsers();
+		return userList;
+	}
 	
 
 }

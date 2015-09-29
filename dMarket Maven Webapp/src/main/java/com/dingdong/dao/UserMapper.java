@@ -1,5 +1,7 @@
 package com.dingdong.dao;
 
+import java.util.List;
+
 import com.dingdong.pojo.User;
 
 public interface UserMapper {
@@ -9,4 +11,6 @@ public interface UserMapper {
 	public int insert(User u);
 	
 	public int update(User u);
+	 
+	public List<User> findAllUsers();
 }

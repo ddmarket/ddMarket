@@ -11,7 +11,7 @@
    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h4 class="text-primary">我的收藏显示页面</h4><hr>
+	<h4 class="text-primary">我的收藏</h4><hr>
 	
 </body>
 </html>

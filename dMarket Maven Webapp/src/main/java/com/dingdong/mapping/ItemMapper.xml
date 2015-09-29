@@ -32,7 +32,9 @@
     where item_id = #{item_id,jdbcType=INTEGER}
   </select>
   
-  <select id="findAllItems" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  
+  <!-- 查询所有注册会员 -->
+  <select id="findAllItems" resultMap="ResultMapWithBLOBs" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -40,6 +42,7 @@
     from t_item
     order by item_id
   </select>
+  
  <select id="findItemsByName" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />

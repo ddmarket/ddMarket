@@ -178,4 +178,9 @@ public class UserController {
 	}
 
 
+	@RequestMapping(value = "/sub_home_receiver", method = RequestMethod.GET)
+	public String subHomeReceiver(HttpServletRequest request) {
+		return "sub_home_receiver";
+	}
+
 }

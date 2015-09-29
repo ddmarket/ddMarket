@@ -82,6 +82,7 @@ public class ItemService {
 		map.put("Page", page);
 		return itemMapper.findItemsByNameByOrder(map);
 	}
+	
 	public List<Item> findAllItems(Page page) {
 		ItemMapperlmp itemMapper = new ItemMapperlmp();
 		int totalNumber = itemMapper.countItem();

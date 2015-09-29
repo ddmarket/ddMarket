@@ -19,16 +19,26 @@ public class ItemListController {
 	//list请求之后追加 cl=，按照classify检索商品
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String  listGet(HttpServletRequest request) {
-		int classify = Integer.parseInt((String) request.getParameter("classify"));
-		int currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
+		int classifyID  = 0;
+		int currentPage = 1;
+//		if ( request.getParameter("classify") != null) {
+////			classifyID = Integer.parseInt((String) request.getParameter("id"));
+////		}
+//		if ( request.getParameter("currentPage") != null) {
+//			currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
+//		}
+		
 		ItemService service = new ItemService();
 		Page page  = new Page();
 		page.setCurrentPage(currentPage);
-		
-		
 		//TODO 有关分页
 		List<Item> itemList  = service.findAllItems(page);
-		request.setAttribute("itemList", itemList);
+//		request.setAttribute("itemList", itemList);
+		
+		
+		System.out.println("page:");
+		System.out.println(page.getTotalPage());
+		System.out.println(page.getTotalNumber());
 		return "list";
 	}
 	

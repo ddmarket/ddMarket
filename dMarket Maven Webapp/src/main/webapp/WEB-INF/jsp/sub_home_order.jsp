@@ -14,7 +14,7 @@
 	
 </head>
 <body>
-	<h4 class="text-primary">个人订单显示页面</h4><hr>
+	<h4 class="text-primary">个人订单</h4><hr>
 	
 	     
 	     <!-- 无订单数据的情况 -->
