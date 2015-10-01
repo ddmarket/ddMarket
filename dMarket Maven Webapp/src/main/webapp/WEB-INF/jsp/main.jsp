@@ -25,7 +25,7 @@
   <div class="container" style="width: 1100px !important;">
     <div class="row">
      <div class="col-md-6">
-        <a href="index"><img src="image/logo2.png"></a></div>
+        <a href="index"><img src="image/logo.png"></a></div>
     <div class="col-md-6">
     
     <!-- 搜索框 -->
