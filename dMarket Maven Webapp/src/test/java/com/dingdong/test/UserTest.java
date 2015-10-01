@@ -19,17 +19,18 @@ public class UserTest {
 		UserService userService = new UserService();
 		userService.register(user);
 	}
-	
+
 	@Test
 	public void loginTest() {
 		String name = "yinbro";
-		String psw =  "yinbro";
+		String psw = "yinbro";
 		UserService userService = new UserService();
 		User result = userService.login(name, psw);
 		System.out.println(result);
 	}
+
 	@Test
-	public void updateTest(){
+	public void updateTest() {
 		User user = new User();
 		user.setUser_id(2);
 		user.setCredit(100);

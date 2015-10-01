@@ -9,9 +9,9 @@ import com.dingdong.pojo.Page;
 import com.dingdong.service.ItemService;
 
 public class ItemTest {
-	
+
 	@Test
-	public void updateItemTest(){
+	public void updateItemTest() {
 		Item item = new Item();
 		item.setItem_id(1);
 		item.setBrand("iPhone");
@@ -26,9 +26,9 @@ public class ItemTest {
 		ItemService itemService = new ItemService();
 		itemService.updateItem(item);
 	}
-	
+
 	@Test
-	public void addItemTest(){
+	public void addItemTest() {
 		Item item = new Item();
 		item.setBrand("小米");
 		item.setClassified_id(1);
@@ -42,43 +42,46 @@ public class ItemTest {
 		ItemService itemService = new ItemService();
 		itemService.addItem(item);
 	}
+
 	public static void main(String[] args) {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);
-		List<Item> list = itemService.findItemsByName("小米",page);
+		List<Item> list = itemService.findItemsByName("小米", page);
 		System.out.println(list.size());
-		
-		
+
 	}
-	
+
 	@Test
-	public void findItemsByNameTest(){
+	public void findItemsByNameTest() {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);
-		List<Item> list = itemService.findItemsByName("小米",page);
+		List<Item> list = itemService.findItemsByName("小米", page);
 		System.out.println(list.size());
 	}
-	
+
 	@Test
-	public void findItemsByClassifyIDTest(){
+	public void findItemsByClassifyIDTest() {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);
 		List<Item> list = itemService.findItemsByClassifyID("1", page);
 		System.out.println(list.size());
 	}
+
 	@Test
-	public void findItemsByNameByOrderIDTest(){
+	public void findItemsByNameByOrderIDTest() {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);
-		List<Item> list = itemService.findItemsByNameByOrder("小米", "price", page);
+		List<Item> list = itemService.findItemsByNameByOrder("小米", "price",
+				page);
 		System.out.println(list.size());
 	}
+
 	@Test
-	public void findAllItemsTest(){
+	public void findAllItemsTest() {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);

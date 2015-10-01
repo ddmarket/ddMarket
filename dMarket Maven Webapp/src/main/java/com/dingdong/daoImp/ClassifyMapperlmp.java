@@ -9,16 +9,17 @@ import com.dingdong.dao.ClassifyMapper;
 import com.dingdong.mybatis.MybatisUtil;
 import com.dingdong.pojo.Classify;
 
-public class ClassifyMapperlmp implements ClassifyMapper{
-	
-	private SqlSessionFactory sqlSessionFactory =  MybatisUtil.getSessionFactory();
-	
+public class ClassifyMapperlmp implements ClassifyMapper {
+
+	private SqlSessionFactory sqlSessionFactory = MybatisUtil
+			.getSessionFactory();
+
 	@Override
 	public boolean addClassify(Classify classsify) {
 		boolean isAdded = false;
-		SqlSession session =  sqlSessionFactory.openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		ClassifyMapper classifyMapper = session.getMapper(ClassifyMapper.class);
-		isAdded =  classifyMapper.addClassify(classsify);
+		isAdded = classifyMapper.addClassify(classsify);
 		session.commit();
 		session.close();
 		return isAdded;
@@ -27,7 +28,7 @@ public class ClassifyMapperlmp implements ClassifyMapper{
 	@Override
 	public Classify findClassifyByID(int id) {
 		Classify classsify = null;
-		SqlSession session =  sqlSessionFactory.openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		ClassifyMapper classifyMapper = session.getMapper(ClassifyMapper.class);
 		classifyMapper.findClassifyByID(id);
 		session.commit();
@@ -38,7 +39,7 @@ public class ClassifyMapperlmp implements ClassifyMapper{
 	@Override
 	public List findAll() {
 		Classify classsify = null;
-		SqlSession session =  sqlSessionFactory.openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		ClassifyMapper classifyMapper = session.getMapper(ClassifyMapper.class);
 		List list = classifyMapper.findAll();
 		session.commit();

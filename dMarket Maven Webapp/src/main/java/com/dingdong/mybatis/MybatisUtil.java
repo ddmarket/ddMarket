@@ -5,8 +5,6 @@ import java.io.InputStream;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -39,7 +37,7 @@ public class MybatisUtil {
 
 	public static void main(String[] args) {
 		MybatisUtil mybatisUtil = new MybatisUtil();
-		SqlSessionFactory sessionFactory = mybatisUtil.getSessionFactory();
-		
+		SqlSessionFactory sessionFactory = MybatisUtil.getSessionFactory();
+
 	}
 }

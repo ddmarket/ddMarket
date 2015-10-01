@@ -1,11 +1,13 @@
 package com.dingdong.test;
+
 import org.junit.Test;
 
 import com.dingdong.pojo.Receiver;
 import com.dingdong.service.ReceiverService;
+
 public class ReceiverTest {
 	@Test
-	public void addReceiveTest(){
+	public void addReceiveTest() {
 		ReceiverService receiverService = new ReceiverService();
 		Receiver receiver = new Receiver();
 		receiver.setAddress("长沙理工大学");
@@ -15,13 +17,15 @@ public class ReceiverTest {
 		receiver.setUser_id(3);
 		receiverService.addReceiver(receiver);
 	}
+
 	@Test
-	public void deleteReceiveTest(){
+	public void deleteReceiveTest() {
 		ReceiverService receiverService = new ReceiverService();
 		receiverService.deleteReceiverByID("2");
 	}
+
 	@Test
-	public void updateReceiveTest(){
+	public void updateReceiveTest() {
 		ReceiverService receiverService = new ReceiverService();
 		Receiver receiver = new Receiver();
 		receiver.setAddress("长沙理工大学");

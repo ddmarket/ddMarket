@@ -40,9 +40,10 @@ public class OrderMapperlmp {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	/**
 	 * 通过订单号查找订单信息
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -55,9 +56,11 @@ public class OrderMapperlmp {
 		sqlSession.close();
 		return order;
 	}
-	//FDFyg
+
+	// FDFyg
 	/**
 	 * 通过用户id查找订单信息
+	 * 
 	 * @param userID
 	 * @return
 	 */
@@ -66,18 +69,18 @@ public class OrderMapperlmp {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
-	    list = orderMapper.findOrdersByUserID(userID);
+		list = orderMapper.findOrdersByUserID(userID);
 		sqlSession.commit();
 		sqlSession.close();
 		return list;
 	}
 
-	public List<Order> findOrdersByUserIdAndDate(Map<String,String> map) {
+	public List<Order> findOrdersByUserIdAndDate(Map<String, String> map) {
 		List<Order> list = new ArrayList<Order>();
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
-	    list = orderMapper.findOrdersByUserIdAndDate(map);
+		list = orderMapper.findOrdersByUserIdAndDate(map);
 		sqlSession.commit();
 		sqlSession.close();
 		return list;

@@ -13,15 +13,16 @@ import javax.servlet.ServletResponse;
  */
 public class CharactorFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     * 
-     */
+	/**
+	 * Default constructor.
+	 * 
+	 */
 	String encoding = null;
-    public CharactorFilter() {
-        // TODO Auto-generated constructor stub
-    	
-    }
+
+	public CharactorFilter() {
+		// TODO Auto-generated constructor stub
+
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -36,14 +37,15 @@ public class CharactorFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
 
 		// pass the request along the filter chain
-		if(encoding != null){
+		if (encoding != null) {
 			request.setCharacterEncoding(encoding);
-			response.setContentType("text/html; charset="+encoding);
+			response.setContentType("text/html; charset=" + encoding);
 		}
 		chain.doFilter(request, response);
 	}

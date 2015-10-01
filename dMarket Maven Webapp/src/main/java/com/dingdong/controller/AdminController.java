@@ -8,13 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.dingdong.pojo.Admin;
 import com.dingdong.pojo.Classify;
 import com.dingdong.pojo.Item;
 import com.dingdong.pojo.Page;
-import com.dingdong.pojo.User;
 import com.dingdong.service.AdminService;
 import com.dingdong.service.ClassifyService;
 import com.dingdong.service.ItemService;
@@ -95,7 +92,7 @@ public class AdminController {
 
 	// 增加商品Post
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
-	public String addItemPost(Item item,HttpServletRequest request) {
+	public String addItemPost(Item item, HttpServletRequest request) {
 		String province = request.getParameter("province");
 		String city = request.getParameter("city");
 		String area = request.getParameter("area");

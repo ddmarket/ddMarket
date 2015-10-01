@@ -9,7 +9,7 @@ import com.dingdong.service.CommentService;
 
 public class CommentTest {
 	@Test
-	public void addCommentTest(){
+	public void addCommentTest() {
 		CommentService commentService = new CommentService();
 		Comment comment = new Comment();
 		comment.setCommenttime(new Date());
@@ -19,9 +19,9 @@ public class CommentTest {
 		comment.setUser_id(2);
 		commentService.addComment(comment);
 	}
-	
+
 	@Test
-	public void updateCommentTest(){
+	public void updateCommentTest() {
 		CommentService commentService = new CommentService();
 		Comment comment = new Comment();
 		comment.setCommenttime(new Date());
@@ -32,15 +32,15 @@ public class CommentTest {
 		comment.setComment_id(1);
 		commentService.updateComment(comment);
 	}
-	
+
 	@Test
-	public void findCommentsByItemIDTest(){
+	public void findCommentsByItemIDTest() {
 		CommentService commentService = new CommentService();
 		commentService.findCommentsByItemID("2");
 	}
-	
+
 	@Test
-	public void findCommentsByUserID(){
+	public void findCommentsByUserID() {
 		CommentService commentService = new CommentService();
 		commentService.findCommentsByUserID("2");
 	}

@@ -11,12 +11,21 @@
   <sql id="Base_Column_List" >
     receiver_id, user_id, name, telephone, address
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from t_receiver
     where receiver_id = #{receiver_id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUserID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_receiver
+    where user_id = #{value}
+  </select>
+  
   <delete id="deleteReceiverByID" parameterType="java.lang.Integer" >
     delete from t_receiver
     where receiver_id = #{receiver_id,jdbcType=INTEGER}
@@ -27,6 +36,7 @@
     values (#{receiver_id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=CHAR}, #{address,jdbcType=VARCHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.dingdong.pojo.Receiver" >
     insert into t_receiver
     <trim prefix="(" suffix=")" suffixOverrides="," >

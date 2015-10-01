@@ -17,7 +17,8 @@ public class OrderDetailMapperlmp {
 		boolean isAdd = false;
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		OrderDetailMapper orderDetailMapper = sqlSession.getMapper(OrderDetailMapper.class);
+		OrderDetailMapper orderDetailMapper = sqlSession
+				.getMapper(OrderDetailMapper.class);
 		isAdd = orderDetailMapper.createOrderDetail(OrderDetail);
 		sqlSession.commit();
 		sqlSession.close();
@@ -33,7 +34,8 @@ public class OrderDetailMapperlmp {
 		OrderDetail orderDetail = new OrderDetail();
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		OrderDetailMapper orderDetailMapper = sqlSession.getMapper(OrderDetailMapper.class);
+		OrderDetailMapper orderDetailMapper = sqlSession
+				.getMapper(OrderDetailMapper.class);
 		orderDetail = orderDetailMapper.findOrderDetailByID(id);
 		sqlSession.commit();
 		sqlSession.close();
@@ -44,7 +46,8 @@ public class OrderDetailMapperlmp {
 		List<OrderDetail> list = new ArrayList<OrderDetail>();
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		OrderDetailMapper orderDetailMapper = sqlSession.getMapper(OrderDetailMapper.class);
+		OrderDetailMapper orderDetailMapper = sqlSession
+				.getMapper(OrderDetailMapper.class);
 		list = orderDetailMapper.findOrderDetailsByOrderID(orderID);
 		sqlSession.commit();
 		sqlSession.close();

@@ -6,11 +6,10 @@ import com.dingdong.pojo.ItemPic;
 
 public interface ItemPicMapper {
 	public boolean addItemPic(ItemPic itemPic);
-	
 
 	public boolean updateOrderDetail(ItemPic itemPic);
-	
-	//花式查询
+
+	// 花式查询
 	public List<ItemPic> findItemPicsByItemID(int id);
 
 }

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dingdong.pojo.Order;
+import com.dingdong.pojo.Receiver;
 import com.dingdong.pojo.User;
 import com.dingdong.service.OrderService;
+import com.dingdong.service.ReceiverService;
 import com.dingdong.service.UserService;
 
 @Controller
@@ -30,7 +32,6 @@ public class UserController {
 			request.setAttribute("info", "登录失败，请重试");
 			return "status";
 		}
-
 		httpSession.setAttribute("user", user);
 		return "main";
 	}
@@ -86,8 +87,6 @@ public class UserController {
 		return "register";
 	}
 
-	
-	
 	// userUpdate
 	@RequestMapping(value = "/userupdate", method = RequestMethod.POST)
 	public String userUpdate(HttpServletRequest request) {
@@ -134,8 +133,7 @@ public class UserController {
 		return "home";
 
 	}
-	
-	
+
 	@RequestMapping(value = "/sub_home_my", method = RequestMethod.GET)
 	public String subHomeMy(HttpServletRequest request) {
 		return "sub_home_my";
@@ -160,7 +158,7 @@ public class UserController {
 	public String subHomeTop(HttpServletRequest request) {
 		return "sub_home_top";
 	}
-	
+
 	@RequestMapping(value = "/sub_home_left", method = RequestMethod.GET)
 	public String subHomeLeft(HttpServletRequest request) {
 		return "sub_home_left";
@@ -170,16 +168,23 @@ public class UserController {
 	public String subHomePSW(HttpServletRequest request) {
 		return "sub_home_pswChange";
 	}
-	
 
 	@RequestMapping(value = "/sub_home_collection", method = RequestMethod.GET)
 	public String subHomeCollection(HttpServletRequest request) {
 		return "sub_home_collection";
 	}
 
-
 	@RequestMapping(value = "/sub_home_receiver", method = RequestMethod.GET)
 	public String subHomeReceiver(HttpServletRequest request) {
+		ReceiverService service = new ReceiverService();
+		User user = (User) request.getSession().getAttribute("user");
+		if (user == null) {
+			request.setAttribute("info", "访问异常，请<a href='login'>重新登录</a>");
+			return "status";
+		}
+		List<Receiver> receiverList = service.findReceiverByUserID(user.getUser_id());
+		// System.out.println(receiverList.get(0).getAddress());
+		request.setAttribute("receiverList", receiverList);
 		return "sub_home_receiver";
 	}
 

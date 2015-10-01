@@ -8,7 +8,7 @@
    <nav class="navbar navbar-inverse">
         <div class="navbar-collapse collapse" role="navigation">
         <div class="navbar-header">        
-          <a target="_blank" class="navbar-brand a2" href="index">logo</a>
+          <a target="_blank" class="navbar-brand a2" href="index">dMarket</a>
         </div>
         
          <ul class="nav navbar-nav navbar-right">
