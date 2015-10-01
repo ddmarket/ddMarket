@@ -56,4 +56,16 @@ public class UserMapperlmp implements UserMapper{
 		return userList;
 	}
 
+
+	@Override
+	public boolean delete(int id) {
+		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		boolean result = userMapper.delete(id);
+		sqlSession.commit();
+		sqlSession.close();
+		return result;
+	}
+
 }

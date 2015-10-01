@@ -21,40 +21,41 @@
 </head>
 <body>
 	<div class="pd-20">
-		<form action="##" method="post" class="form form-horizontal">
+		<form action="addItem" method="post" class="form form-horizontal">
 			<div>
 				<div class="row cl">
-					<label class="form-label col-2">商品品类编号：</label>
+					<label class="form-label col-2">商品品类：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
-							class="input-text" style="width:90%">
+						<select name="classified_id">
+							<c:forEach items="${classifyList }" var="c">
+								<option value=${c.classify_id }>${c.name }</option>
+							</c:forEach>
+						</select>
 					</div>
 					<label class="form-label col-2">商品名称：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
+						<input type="text" name="name" placeholder="" value=""
 							class="input-text" style="width:90%">
 					</div>
 				</div>
 				<div class="row cl">
 					<label class="form-label col-2">商品品牌：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
+						<input type="text" name="brand" placeholder="" value=""
 							class="input-text" style="width:90%">
 					</div>
 					<label class="form-label col-2">所在仓库：</label>
-					<div id="province" class="formControls col-4">
-						
-					</div>
+					<div  id="province" class="formControls col-4"></div>
 				</div>
 				<div class="row cl">
 					<label class="form-label col-2">商品单价：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
+						<input type="text" name="price" placeholder="" value=""
 							class="input-text" style="width:90%"> 元
 					</div>
 					<label class="form-label col-2">商品库存：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
+						<input type="text" name="instock" placeholder="" value=""
 							class="input-text" style="width:90%">
 					</div>
 				</div>
@@ -62,19 +63,21 @@
 					<label class="form-label col-2">商品销量：</label>
 					<!-- 默认为0 -->
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
+						<input type="text" name="sales" placeholder="" value=""
 							class="input-text" style="width:90%">
 					</div>
 					<label class="form-label col-2">是否推荐：</label>
 					<div class="formControls col-4">
-						<input type="text" name="" id="" placeholder="" value=""
-							class="input-text" style="width:90%">
+						<select name="isrecommend">
+							<option value="1">推荐</option>
+							<option selected="selected" value="0" >不推荐</option>
+						</select>
 					</div>
 				</div>
 				<div class="row cl">
 					<label class="form-label col-2">商品简介：</label>
 					<div class="formControls col-10">
-						<textarea name="" cols="" rows="" class="textarea"
+						<textarea name="introduction" cols="" rows="" class="textarea"
 							placeholder="说点什么...最少输入10个字符" datatype="*10-100"
 							dragonfly="true" nullmsg="备注不能为空！"
 							onKeyUp="textarealength(this,200)"></textarea>

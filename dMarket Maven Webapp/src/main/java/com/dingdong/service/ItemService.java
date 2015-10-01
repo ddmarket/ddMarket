@@ -32,12 +32,15 @@ public class ItemService {
 	}
 	
 	
-	//花式查询
 	public Item findItemByID(String idStr){
 		int id = Integer.parseInt(idStr);
 		ItemMapperlmp itemMapper = new ItemMapperlmp();
 		return itemMapper.findItemByID(id);
 	}
+	
+	
+	
+	
 	/*
 	 * 根据名称查找商品并进行分页处理
 	 */

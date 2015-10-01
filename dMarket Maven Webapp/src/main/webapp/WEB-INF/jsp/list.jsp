@@ -107,7 +107,7 @@ strong {
 			<div class="row" >
 				<c:forEach items="${itemList }" var="i" varStatus="num">
 					<div class="col-xs-3 col-md-3">
-						<a href="shoppingBox?iid=${i.item_id }"><img id="r1" src="image/loginBackground.png" alt="图片加载中..."
+						<a href="itemDetail?iid=${i.item_id }"><img id="r1" src="image/loginBackground.png" alt="图片加载中..."
 							class="img-thumbnail"></a> <strong>￥ ${i.price } </strong> <strong
 							class="s1">销量：${i.sales } </strong><br> <p>${i.name }</p>
 					</div>

@@ -111,4 +111,17 @@ public class Item {
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Item [item_id=" + item_id + ", classified_id=" + classified_id
+				+ ", name=" + name + ", brand=" + brand + ", headPic="
+				+ headPic + ", repertory=" + repertory + ", price=" + price
+				+ ", instock=" + instock + ", sales=" + sales
+				+ ", isrecommend=" + isrecommend + ", introduction="
+				+ introduction + "]";
+	}
+    
+    
+    
 }

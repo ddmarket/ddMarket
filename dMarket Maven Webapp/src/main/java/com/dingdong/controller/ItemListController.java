@@ -42,17 +42,16 @@ public class ItemListController {
 	
 	
 	//商品详情显示
-	@RequestMapping(value = "/shoppingBox", method = RequestMethod.GET)
+	@RequestMapping(value = "/itemDetail", method = RequestMethod.GET)
 		public String  itemDetail(HttpServletRequest request) {
 			String iid  = request.getParameter("iid");
 			ItemService service = new ItemService();
 			Item item  = service.findItemByID(iid);
 			request.setAttribute("item", item);
-			return "shoppingBox";
+			return "itemDetail";
 		}
 	
-	
-	
+
 	
 	
 }

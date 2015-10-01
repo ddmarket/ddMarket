@@ -39,20 +39,20 @@
 				<thead>
 					<tr class="text-c">
 						<th width="25"><input type="checkbox" name="" value=""></th>
-						<th width="120">ID</th>
-						<th width="100">会员名</th>
-						<th width="220">手机</th>
-						<th width="250">邮箱</th>
-						<th width="150">积分</th>
-						<th width="70">状态</th>
-						<th width="100">操作</th>
+						<th width="30">ID</th>
+						<th width="200">会员名</th>
+						<th width="300">手机</th>
+						<th width="300">邮箱</th>
+						<th width="50">积分</th>
+						<th width="50">状态</th>
+						<th width="20">操作</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="u" items="${userList }">
 						<tr class="text-c">
 							<td><input type="checkbox" value="1" name=""></td>
-							<td>${u.user_id }</td>
+							<td id="uid">${u.user_id }</td>
 							<td>${u.name }</td>
 							<td>${u.telephone }</td>
 							<td>${u.email }</td>
@@ -61,21 +61,19 @@
 								class="label label-success radius">${u.status }</span></td>
 
 							<td class="td-manage"><a title="删除" href="javascript:;"
-								onclick="member_del(this,'1')" class="ml-5"
+								onclick="member_del(this,'${u.user_id }')" class="ml-5"
 								style="text-decoration:none"> <i class="Hui-iconfont">&#xe6e2;</i>
 							</a></td>
-							
-							
+
+
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	<form id="opForm"  method="get">
-	
-	</form>
+
+	<form id="opForm" method="GET"></form>
 	<script type="text/javascript">
 		$(function() {
 			$('.table-sort').dataTable({
@@ -85,7 +83,7 @@
 				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
 				{
 					"orderable" : false,
-					"aTargets" : [0,3,4,7]
+					"aTargets" : [ 0, 3, 4, 7 ]
 				} // 制定列不参与排序
 				]
 			});
@@ -97,6 +95,7 @@
 					$(this).addClass('selected');
 				}
 			});
+
 		});
 		/*会员-添加*/
 		function member_add(title, url, w, h) {
@@ -161,11 +160,12 @@
 		function change_password(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
-		
+
 		/*会员-删除*/
-		function member_del(obj, id) {
+		function member_del(obj, uid) {
 			layer.confirm('确认要删除吗？', function(index) {
-				$("#opForm").attr("action","sub_user_delete/"+ id );
+				$("#opForm").attr("action", "deleteUser/"+uid);
+				$("#opForm").submit();
 				layer.msg('已删除!', {
 					icon : 1,
 					time : 1000

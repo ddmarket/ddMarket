@@ -52,6 +52,15 @@ public class UserService {
 		return false;
 	}
 	
+	/**
+	 * @param u
+	 * @return
+	 */
+	public boolean delete(String uid){
+		UserMapper userMapperlmp = new UserMapperlmp();
+		boolean result = userMapperlmp.delete(Integer.parseInt(uid));
+		return false;
+	}
 	
 	public List findAllUsers(){
 		List userList = null;

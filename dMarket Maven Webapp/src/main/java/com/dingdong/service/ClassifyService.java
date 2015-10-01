@@ -1,5 +1,7 @@
 package com.dingdong.service;
 
+import java.util.List;
+
 import com.dingdong.dao.ClassifyMapper;
 import com.dingdong.daoImp.ClassifyMapperlmp;
 import com.dingdong.pojo.Classify;
@@ -14,22 +16,17 @@ public class ClassifyService {
 		
 	}
 
+	public List findAll( ){
+		ClassifyMapper cm = new ClassifyMapperlmp();
+		return cm.findAll();
+	}
+	
 	public Classify findClassifyByID(String idStr){
 		Classify classsify = null;
 		ClassifyMapper cm = new ClassifyMapperlmp();
 		int id = Integer.parseInt(idStr);
 		classsify = cm.findClassifyByID(id);
 		return classsify;
-	}
-	
-	public static void main(String[] args) {
-		ClassifyService sc = new ClassifyService();
-		Classify classify = new Classify();
-		classify.setName("手机");
-		System.out.println("增加分类：" + sc.addClassfy(classify));
-		
-		
-		System.out.println("查找分类：" + sc.findClassifyByID("1"));
 	}
 
 }

@@ -18,4 +18,11 @@
     from t_classify
     where classify_id = #{value}
   </select>
+  
+  <select id="findAll" resultType="com.dingdong.pojo.Classify">
+  	 select 
+    <include refid="Base_Column_List" />
+    from t_classify
+  </select>
+  
 </mapper>

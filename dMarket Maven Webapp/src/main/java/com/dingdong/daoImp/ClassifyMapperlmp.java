@@ -1,5 +1,7 @@
 package com.dingdong.daoImp;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -31,5 +33,16 @@ public class ClassifyMapperlmp implements ClassifyMapper{
 		session.commit();
 		session.close();
 		return classsify;
+	}
+
+	@Override
+	public List findAll() {
+		Classify classsify = null;
+		SqlSession session =  sqlSessionFactory.openSession();
+		ClassifyMapper classifyMapper = session.getMapper(ClassifyMapper.class);
+		List list = classifyMapper.findAll();
+		session.commit();
+		session.close();
+		return list;
 	}
 }

@@ -29,7 +29,6 @@
   </select>
   
   
-  
   <select id="findAllUsers" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
