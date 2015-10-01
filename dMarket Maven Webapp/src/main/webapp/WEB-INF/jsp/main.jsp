@@ -50,32 +50,27 @@
             <div class="dt" style="color:#bbbbbb;">&emsp;<h2>全部商品分类</h2></div>
           </ul>
             <ul class="nav nav-sidebar">
-            <li id="classJy" style="color:red"><a target="_blank" href="list?classify=1" class="a1">生鲜</a></li>           
+            <li id="classJy"><a target="_blank" href="list?classify=1" class="a1">生鲜、水果、水产</a></li>           
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="classJy"><a target="_blank" href="list" class="a1">手机、数码产品、电脑、办公</a></li>       
+            <li id="classJy"><a target="_blank" href="list?classify=2" class="a1">乳品、奶粉、酸奶</a></li>       
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="classJj"><a target="_blank" href="list" class="a1">家居、家装、家具、厨具</a></li>          
+            <li id="classJj"><a target="_blank" href="list?classify=3" class="a1">生活、洁具、家用</a></li>          
           </ul>    
           <ul class="nav nav-sidebar">
-            <li id="classNz"><a target="_blank" href="list" class="a1">男装、女装、珠宝</a></li>          
+            <li id="classNz"><a target="_blank" href="list?classify=4" class="a1">食品、零食、干货</a></li>          
           </ul>  
           <ul class="nav nav-sidebar">
-            <li id="classMz"><a target="_blank" href="list" class="a1">美妆</a></li> 
+            <li id="classMz"><a target="_blank" href="list?classify=5" class="a1">数码、手机、周边</a></li> 
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="classTs"><a target="_blank" href="list" class="a1">图书、音像</a></li>           
+            <li id="classTs"><a target="_blank" href="list?classify=6" class="a1">饮品、碳酸、乳制</a></li>           
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="classYd"><a target="_blank" href="list" class="a1">运动户外</a></li>           
+            <li id="classYd"><a target="_blank" href="list?classify=7" class="a1">母婴、玩具、用品</a></li>           
           </ul>
-          <ul class="nav nav-sidebar">
-           <li id="classMy"><a target="_blank" href="list" class="a1">母婴、玩具</a></li>          
-          </ul> 
-          <ul class="nav nav-sidebar">
-            <li id="classSp"><a target="_blank" href="list" class="a1">食品、生鲜</a></li>
-          </ul>    
+          
 				<br>  
         </div>
         

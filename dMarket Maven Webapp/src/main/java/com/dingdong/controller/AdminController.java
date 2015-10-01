@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dingdong.pojo.Admin;
+import com.dingdong.pojo.Page;
+import com.dingdong.pojo.User;
 import com.dingdong.service.AdminService;
+import com.dingdong.service.ItemService;
 import com.dingdong.service.UserService;
 
 @Controller
@@ -58,6 +61,27 @@ public class AdminController {
 		return "manage/sub_users_list";
 	}
 	
+	@RequestMapping(value="/sub_items_list",method = RequestMethod.GET)
+	public String subItemsList(HttpServletRequest request) {
+		ItemService service = new ItemService();
+		//取消分页功能
+		Page page = new Page();
+		page.setPageNumber(Integer.MAX_VALUE);
+		List itemList = service.findAllItems(page);
+		request.getSession().setAttribute("itemList", itemList);
+		return "manage/sub_items_list";
+	}
 	
 	
+	@RequestMapping(value="/sub_item_add",method = RequestMethod.GET)
+	public String subItemAdd(HttpServletRequest request) {
+		return "manage/sub_item_add";
+	}
+	
+	@RequestMapping(value="/sub_item_delete/{id}",method = RequestMethod.GET)
+	public String itemDelete(@PathVariable("id") String id) {
+		UserService service = new UserService();
+		
+		return "redirect:/sub_items_list";
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE HTML>
 <html>
@@ -10,35 +11,26 @@
 <meta name="viewport"
 	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<LINK rel="Bookmark" href="/favicon.ico">
-<LINK rel="Shortcut Icon" href="/favicon.ico" />
 
-<link href="hui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="hui/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
-<link href="hui/skin/default/skin.css" rel="stylesheet" type="text/css"
-	id="skin" />
-<link href="hui/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet"
-	type="text/css" />
-<link href="hui/css/style.css" rel="stylesheet" type="text/css" />
+
+<%@include file="rs_js_css_import.html" %>
+
 <title>叮咚超市后台管理系统</title>
 </head>
 <body>
 	<header class="Hui-header cl">
 		<a class="Hui-logo l" title="H-ui.admin v2.3" href="menu">叮咚</a> <a
-			class="Hui-logo-m l" href="#" title="H-ui.admin">XXX</a> <span
-			class="Hui-subtitle l">后台管理系统</span>
+			class="Hui-logo-m l" href="#" title="H-ui.admin">***</a> <span
+			class="Hui-subtitle l">--后台管理系统</span>
 		<ul class="Hui-userbar">
 			<li>${ admin.name}</li>
-			<li class="dropDown dropDown_hover"><a href="#"
-				class="dropDown_A">管理员<i class="Hui-iconfont">&#xe6d5;</i></a>
+			<li class="dropDown dropDown_hover">
+			<a href="#"	class="dropDown_A">管理员</a>
 				<ul class="dropDown-menu radius box-shadow">
-					<li><a href="#">个人信息</a></li>
-					<li><a href="#">切换账户</a></li>
-					<li><a href="#">退出</a></li>
+					<li><a href="#">*退出</a></li>
 				</ul></li>
-			<li id="Hui-msg"><a href="#" title="消息"><span
-					class="badge badge-danger">1</span><i class="Hui-iconfont"
-					style="font-size:18px">&#xe68a;</i></a></li>
+			
+
 			<li id="Hui-skin" class="dropDown right dropDown_hover"><a
 				href="javascript:;" title="换肤"><i class="Hui-iconfont"
 					style="font-size:18px">&#xe62a;</i></a>
@@ -63,8 +55,17 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="product-list.html" href="javascript:void(0)">商品管理</a></li>
+						<li><a _href="sub_items_list" href="javascript:void(0)">查看商品</a></li>
 					</ul>
+					
+					<ul>
+						<li><a _href="sub_item_add" href="javascript:void(0)">新品上架</a></li>
+					</ul>
+					
+					<ul>
+						<li><a _href="product-list.html" href="javascript:void(0)">销量分析</a></li>
+					</ul>
+					
 				</dd>
 			</dl>
 			<dl id="menu-comments">
@@ -74,7 +75,11 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="feedback-list.html" href="javascript:void(0)">用户评论</a></li>
+						<li><a _href="feedback-list.html" href="javascript:void(0)">查看评论</a></li>
+					</ul>
+					
+					<ul>
+						<li><a _href="feedback-list.html" href="javascript:void(0)">管理评论</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -85,19 +90,31 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="sub_users_list" href="javascript:;">会员列表</a></li>
+						<li><a _href="sub_users_list" href="javascript:;">所有会员</a></li>
+					</ul>
+					
+					<ul>
+						<li><a _href="sub_users_list" href="javascript:;">*会员积分</a></li>
 					</ul>
 				</dd>
 			</dl>
 			<dl id="menu-member">
 				<dt>
-					<i class="Hui-iconfont">&#xe63d;</i> 订单管理<i
+					<i class="Hui-iconfont">&#xe627;</i> 订单管理<i
 						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="order-list.html" href="javascript:;">订单列表</a></li>
+						<li><a _href="order-list.html" href="javascript:;">所有订单</a></li>
 					</ul>
+
+					<ul>
+						<li><a _href="order-list.html" href="javascript:;">发货管理</a></li>
+					</ul>
+					<ul>
+						<li><a _href="order-list.html" href="javascript:;">售后服务</a></li>
+					</ul>
+
 				</dd>
 			</dl>
 		</div>
@@ -110,7 +127,7 @@
 		<div id="Hui-tabNav" class="Hui-tabNav">
 			<div class="Hui-tabNav-wp">
 				<ul id="min_title_list" class="acrossTab cl">
-					<li class="active"><span title="我的桌面" data-href="">我的桌面</span><em></em></li>
+					<li class="active"><span title="我的桌面" data-href="">欢迎进入叮咚超市后台管理系统</span><em></em></li>
 				</ul>
 			</div>
 			<div class="Hui-tabNav-more btn-group">
@@ -128,10 +145,6 @@
 		</div>
 	</section>
 
-	<script type="text/javascript" src="hui/lib/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="hui/lib/layer/1.9.3/layer.js"></script>
-	<script type="text/javascript" src="hui/js/H-ui.js"></script>
-	<script type="text/javascript" src="hui/js/H-ui.admin.js"></script>
 	<script type="text/javascript">
 		/*资讯-添加*/
 		function article_add(title, url) {

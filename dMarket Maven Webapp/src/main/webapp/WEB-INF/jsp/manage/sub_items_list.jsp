@@ -11,71 +11,74 @@
 	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-<%@include file="rs_js_css_import.html"%>
-
-<title>会员管理</title>
+<%@include file="rs_js_css_import.html" %>
+	
+<title>商品管理</title>
 </head>
 <body>
 	<div class="pd-20">
 		<div class="text-c">
 			<input type="text" class="input-text" style="width:250px"
-				placeholder="输入会员名称" name="name">
+				placeholder="输入商品名称" name="name">
 			<button type="submit" class="btn btn-success radius" name="">
-				<i class="Hui-iconfont">&#xe665;</i> 检索会员
+				<i class="Hui-iconfont">&#xe665;</i> 检索商品
 			</button>
 		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
 			<span class="l"> <a href="javascript:;" onclick="datadel()"
-				class="btn btn-danger radius"> <i class="Hui-iconfont">&#xe6e2;</i>
-					批量删除
+				class="btn btn-danger radius"> <i class="Hui-iconfont">&#xe6e2;</i>批量删除
 			</a>
-			</span> <span class="r">共有会员记录：<strong>${fn:length(userList)}</strong>条
+			</span> <span class="r">共有商品记录：<strong>${fn:length(itemList)}</strong>条
 			</span>
 		</div>
+
 		<div class="mt-20">
 			<table
-				class="table table-border table-bordered table-hover table-bg table-sort">
+				class="table table-border table-bordered table-bg table-hover table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="25"><input type="checkbox" name="" value=""></th>
-						<th width="120">ID</th>
-						<th width="100">会员名</th>
-						<th width="220">手机</th>
-						<th width="250">邮箱</th>
-						<th width="150">积分</th>
-						<th width="70">状态</th>
+						<th width="40"><input name="" type="checkbox" value=""></th>
+						<th width="40">产品ID</th>
+						<th width="100">产品名称</th>
+						<th width="40">品牌</th>
+						<th width="40">分类ID</th>
+						<th 		  >描述</th>
+						<th width="50">单价</th>
+						<th width="100">仓库</th>
+						<th width="100">库存</th>
+						<th width="60"> 销量</th>
+						<th width="30"> 推荐?</th>
 						<th width="100">操作</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="u" items="${userList }">
-						<tr class="text-c">
-							<td><input type="checkbox" value="1" name=""></td>
-							<td>${u.user_id }</td>
-							<td>${u.name }</td>
-							<td>${u.telephone }</td>
-							<td>${u.email }</td>
-							<td>${u.credit }</td>
-							<td class="td-status"><span
-								class="label label-success radius">${u.status }</span></td>
+					<c:forEach var="i" items="${itemList }">
+						<tr class="text-c va-m">
+							<td><input name="" type="checkbox" value=""></td>
+							<td>${i.item_id } </td>
+							<td>${i.name } </td>
+							<td class="text-l">${i.brand } </td>
+							<td class="text-l">${i.classified_id }</td>
+							<td class="text">${i.introduction }</td>
+							<td class="price">${i.price }</td>
+							<td class="text">${i.repertory }</td>
+							<td class="text">${i.instock }</td>
+							<td class="text">${i.sales }</td>
+							<td class="td-status">
+								<span	class="label label-success radius">	${i.isrecommend }</span>
+							</td>
 
-							<td class="td-manage"><a title="删除" href="javascript:;"
-								onclick="member_del(this,'1')" class="ml-5"
-								style="text-decoration:none"> <i class="Hui-iconfont">&#xe6e2;</i>
-							</a></td>
-							
-							
+							<td class="td-status"><span
+								class="label label-success radius"> 管理商品</span></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	<form id="opForm"  method="get">
-	
-	</form>
+
+
+
 	<script type="text/javascript">
 		$(function() {
 			$('.table-sort').dataTable({
@@ -85,7 +88,7 @@
 				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
 				{
 					"orderable" : false,
-					"aTargets" : [0,3,4,7]
+					"aTargets" : [ 0, 8, 9 ]
 				} // 制定列不参与排序
 				]
 			});
@@ -98,15 +101,15 @@
 				}
 			});
 		});
-		/*会员-添加*/
+		/*商品-添加*/
 		function member_add(title, url, w, h) {
 			layer_show(title, url, w, h);
 		}
-		/*会员-查看*/
+		/*商品-查看*/
 		function member_show(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
-		/*会员-停用*/
+		/*商品-停用*/
 		function member_stop(obj, id) {
 			layer
 					.confirm(
@@ -130,7 +133,7 @@
 							});
 		}
 
-		/*会员-启用*/
+		/*商品-启用*/
 		function member_start(obj, id) {
 			layer
 					.confirm(
@@ -153,7 +156,7 @@
 								});
 							});
 		}
-		/*会员-编辑*/
+		/*商品-编辑*/
 		function member_edit(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
@@ -161,11 +164,10 @@
 		function change_password(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
-		
-		/*会员-删除*/
+		/*商品-删除*/
 		function member_del(obj, id) {
 			layer.confirm('确认要删除吗？', function(index) {
-				$("#opForm").attr("action","sub_user_delete/"+ id );
+				$(obj).parents("tr").remove();
 				layer.msg('已删除!', {
 					icon : 1,
 					time : 1000

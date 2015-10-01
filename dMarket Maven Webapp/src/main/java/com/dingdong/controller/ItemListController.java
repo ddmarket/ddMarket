@@ -19,35 +19,40 @@ public class ItemListController {
 	//list请求之后追加 cl=，按照classify检索商品
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String  listGet(HttpServletRequest request) {
-		int classifyID  = 0;
-		int currentPage = 1;
-//		if ( request.getParameter("classify") != null) {
-////			classifyID = Integer.parseInt((String) request.getParameter("id"));
-////		}
-//		if ( request.getParameter("currentPage") != null) {
-//			currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
-//		}
+		String classifyID  = "1";
+		int currentPage = 0;
+		if ( request.getParameter("classify") != null) {
+			classifyID =  request.getParameter("classify");
+		}
+		if ( request.getParameter("currentPage") != null&& !request.getParameter("currentPage").equals("")) {
+			currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
+		}
 		
 		ItemService service = new ItemService();
 		Page page  = new Page();
 		page.setCurrentPage(currentPage);
-		//TODO 有关分页
-		List<Item> itemList  = service.findAllItems(page);
-//		request.setAttribute("itemList", itemList);
-		
-		
-		System.out.println("page:");
-		System.out.println(page.getTotalPage());
-		System.out.println(page.getTotalNumber());
+		//TODO 有待优化
+		List<Item> itemList  = service.findItemsByClassifyID(classifyID, page);
+//		List<Item> itemList  = service.findAllItems(page);
+		request.setAttribute("itemList", itemList);
 		return "list";
 	}
 	
 	
 	
-	public static void main(String[] args) {
-		ItemListController controller = new ItemListController();
-		controller.listGet(null);
-	}
 	
-
+	//商品详情显示
+	@RequestMapping(value = "/shoppingBox", method = RequestMethod.GET)
+		public String  itemDetail(HttpServletRequest request) {
+			String iid  = request.getParameter("iid");
+			ItemService service = new ItemService();
+			Item item  = service.findItemByID(iid);
+			request.setAttribute("item", item);
+			return "shoppingBox";
+		}
+	
+	
+	
+	
+	
 }

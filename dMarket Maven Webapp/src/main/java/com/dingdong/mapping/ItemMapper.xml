@@ -79,7 +79,7 @@
     from t_item
     <where>
     	 <if test="ClassfyID != null" >
-    	 	and classified_id = {ClassfyID}
+    	 	and classified_id = #{ClassfyID}
     	 </if>
     </where>
     order by item_id limit #{page.dbIndex},#{page.dbNumber}
