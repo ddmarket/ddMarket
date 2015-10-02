@@ -11,6 +11,16 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="hui/js/back-top-yinbro.js"></script>
+
+
+
+
+
+
+
+
+
 <style type="text/css">
 .a2 {
 	font-size: 40px;

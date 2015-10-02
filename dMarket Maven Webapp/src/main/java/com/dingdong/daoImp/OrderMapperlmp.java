@@ -37,8 +37,14 @@ public class OrderMapperlmp {
 	}
 
 	public boolean deleteOrder(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = false;
+		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		isDeleted = orderMapper.deleteOrder(id);
+		sqlSession.commit();
+		sqlSession.close();
+		return isDeleted;
 	}
 
 	/**

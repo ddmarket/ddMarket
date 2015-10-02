@@ -23,7 +23,11 @@ jQuery(function($){
                                  {image : 'hui/images/backgrounds/0.jpg'},
          						 {image : 'hui/images/backgrounds/1.jpg'},
          						 {image : 'hui/images/backgrounds/2.jpg'},
-								 {image : 'hui/images/backgrounds/3.jpg'}
+								 {image : 'hui/images/backgrounds/3.jpg'},
+         						 {image : 'hui/images/backgrounds/4.jpg'},
+         						 {image : 'hui/images/backgrounds/5.jpg'},
+         						 {image : 'hui/images/backgrounds/6.jpg'},
+         						 {image : 'hui/images/backgrounds/7.jpg'}
                        ]
     					
     });
