@@ -45,7 +45,7 @@
 							class="input-text" style="width:90%">
 					</div>
 					<label class="form-label col-2">所在仓库：</label>
-					<div  id="province" class="formControls col-4"></div>
+					<div id="province" class="formControls col-4"></div>
 				</div>
 				<div class="row cl">
 					<label class="form-label col-2">商品单价：</label>
@@ -59,6 +59,7 @@
 							class="input-text" style="width:90%">
 					</div>
 				</div>
+
 				<div class="row cl">
 					<label class="form-label col-2">商品销量：</label>
 					<!-- 默认为0 -->
@@ -70,10 +71,24 @@
 					<div class="formControls col-4">
 						<select name="isrecommend">
 							<option value="1">推荐</option>
-							<option selected="selected" value="0" >不推荐</option>
+							<option selected="selected" value="0">不推荐</option>
 						</select>
 					</div>
 				</div>
+
+
+
+				<div class="row cl">
+					<label class="form-label col-2">商品图片：</label>
+					<div class="formControls col-10">
+						<form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
+							<input name="token" type="hidden" value="gp2B2bNFk1dznamQHuNrCUU6__DX3CvTcQCjPzV8">
+							<input name="file" type="file" /> 
+						</form>
+					</div>
+				</div>
+
+
 				<div class="row cl">
 					<label class="form-label col-2">商品简介：</label>
 					<div class="formControls col-10">
@@ -101,10 +116,10 @@
 	</div>
 	</form>
 	<script type="text/javascript">
-			$(function(){
-			  $("#province").ProvinceCity();
-			});
-</script>
+		$(function() {
+			$("#province").ProvinceCity();
+		});
+	</script>
 
 </body>
 </html>

@@ -39,7 +39,9 @@ public class OrderService {
 	 * @return
 	 */
 	public boolean deleteOrder(String id) {
-		return false;
+		int oid = Integer.parseInt(id);
+		OrderMapperlmp orderMapperlmp = new OrderMapperlmp();
+		return orderMapperlmp.deleteOrder(oid);
 	}
 
 	/**
