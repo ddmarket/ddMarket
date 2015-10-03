@@ -1,20 +1,17 @@
-<%@page import="com.dingdong.pojo.Item"%>
-<%@page contentType="text/html; charset=utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>商品详情</title>
+<title>叮咚-商品详情</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="jqueryQuantity/js/payfor.js"></script>
-
 <style type="text/css">
 .btn4 {
 	height: 50px;
@@ -48,18 +45,22 @@ hr {
 	font-family: 幼圆;
 }
 </style>
+
+<SCRIPT LANGUAGE="JavaScript">
+	function changeSrc(obj) {
+		obj.src = "image/ysc.png"; //改变图像地址  
+	}
+</script>
 </head>
 
 <body>
-
 	<!-- 引入顶部个人状态栏 -->
 	<jsp:include page="sub_header.jsp"></jsp:include>
 
-
-	<div class="container" style=" width: 1100px !important;">
+	<div class="container" style="width: 1100px !important;">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="index"><img src="image/logo.png"></a>
+				<a href="main.html"><img src="image/logo1.png"></a>
 			</div>
 			<div class="col-md-6">
 				<form action="#" method="">
@@ -78,27 +79,25 @@ hr {
 	</div>
 
 	<div>
-		<div class="container-f"
-			style="margin-left:10%; width: 1200px !important;">
+
+		<div class="container-f" style="width: 1200px !important;">
 			<div class="row">
 				<hr>
 				<div class="col-xs-5 col-md-5 c3">
-					<img style="margin-left:80px; width: 400px; height: 400px" id="r1"
-						src=${item.headPic}?imageView2/1/w/400/h/400/q/90/format/jpg
-						alt="图片加载中..." class="img-thumbnail">
+					<img id="goodsPicture" src="image/5.png">
+					<!-- 这里是放商品图片的 -->
 				</div>
 
 				<div class="col-xs-5 col-md-5">
 					<div>
-						<h3 style="color: #000; margin-left: 20px;font-family:宋体">
-							${item.name}</h3>
+						<h3 style="color: #000; margin-left: 20px;font-family:宋体">=${item.name }</h3>
 					</div>
 					<div style="background-color:#C5BEBE;height:100px">
 						<h3
 							style="color: #FB052B;margin-left: 20px;margin-bottom:25px;margin-top:25px;font-family:黑体;">
-							叮咚价：￥ <strong id="price_item_1"> ${item.price} </strong>
+							叮咚价： <strong id="price_item_1">${item.price }</strong>
 						</h3>
-						<h4 style="color: #000;margin-left: 20px;">促销信息：全场包邮</h4>
+						<h4 style="color: #000;margin-left: 20px;">全场包邮</h4>
 					</div>
 					<div>
 						<p class="p1">
@@ -115,7 +114,7 @@ hr {
 									name="qty_item_1" value="1" id="qty_item_1"
 									onKeyUp="setAmount.modify('#qty_item_1')" class="text"
 									style="width:60px;" /> <a class="add"
-									onclick="setAmount.add('#qty_item_1')"
+									onClick="setAmount.add('#qty_item_1')"
 									href="javascript:void(0)"> +</a>
 							</p>
 						</div>
@@ -127,7 +126,7 @@ hr {
 						<div class="container">
 							<div class="row">
 								<div class="col-xs-2 col-md-2">
-									<button id="shoppingBtn" type="button" onclick="addCart()"
+									<button id="shoppingBtn" type="button"
 										class="btn btn-danger btn4">
 										<img src="image/shopping.png">加入购物车
 									</button>
@@ -142,70 +141,14 @@ hr {
 						</div>
 					</div>
 				</div>
+				
 
-				<div class="col-xs-2 col-md-2 c2">
-					<p class="p1">已选中的商品</p>
-					<div class="container">
-						<div class="row">
-							<div>
-								<c:forEach var="ci" items="#{cart }">
-									<jsp:useBean class="com.dingdong.service.ItemService"
-										id="service">
-										<%
-											Item item = service.findItemByID(((Item) request
-															.getAttribute("item")).getItem_id().toString());
-										%>
-
-										<h6>
-											<%=item.getName()%>
-											， 数量：${ci.value}
-										</h6>
-										<br>
-										<!-- 调用购物车的商品信息 -->
-									</jsp:useBean>
-								</c:forEach>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-	</div>
-	<br>
-	<hr>
-	<br>
-	<!-- 商品详情页面 -->
-	<div class="container"
-		style="margin-left:10%; width: 1200px !important; position: center">
 
-		<p>商品介绍</p>
+		<!-- 使用包含子页面的方法 -->
+		<jsp:include page="sub_footer.jsp" />
 
 
-
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<!-- 使用包含子页面的方法 -->
-	<jsp:include page="sub_footer.jsp" />
-	<br>
-
-
-	<script type="text/javascript">
-		function addCart() {
-			var num = $("#qty_item_1").val();
-			var id = '${item.item_id}';
-			var url = "addCart?num=" + num + "&id=" + id;
-			window.location.href = url;
-		};
-	</script>
-
-
+		<br>
 </body>
 </html>
