@@ -25,7 +25,6 @@
     <mapper resource="com/dingdong/mapping/CommentMapper.xml"/>
     <mapper resource="com/dingdong/mapping/FavoriteMapper.xml"/>
     <mapper resource="com/dingdong/mapping/ItemMapper.xml"/>
-    <mapper resource="com/dingdong/mapping/ItemPicMapper.xml"/>
     <mapper resource="com/dingdong/mapping/OrderDetailMapper.xml"/>
     <mapper resource="com/dingdong/mapping/OrderMapper.xml"/>
     <mapper resource="com/dingdong/mapping/ReceiverMapper.xml"/>

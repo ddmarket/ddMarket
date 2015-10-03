@@ -51,8 +51,8 @@ public class ReceiverMapperlmp implements ReceiverMapper {
 	}
 
 	@Override
-	public List selectByUserID(int uid) {
-		List receiverList = null;
+	public List<Receiver> selectByUserID(int uid) {
+		List<Receiver> receiverList = null;
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		ReceiverMapper receiverMapper = sqlSession

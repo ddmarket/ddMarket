@@ -23,6 +23,15 @@
   <sql id="Blob_Column_List" >
     introduction
   </sql>
+  
+  
+  
+   <select id="findLastID" resultType="int"  >
+     select max(item_id) from t_item;
+  </select>
+  
+  
+  
   <select id="findItemByID" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

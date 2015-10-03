@@ -1,13 +1,16 @@
 package com.dingdong.controller;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import com.dingdong.pojo.Admin;
 import com.dingdong.pojo.Classify;
 import com.dingdong.pojo.Item;
@@ -16,6 +19,7 @@ import com.dingdong.service.AdminService;
 import com.dingdong.service.ClassifyService;
 import com.dingdong.service.ItemService;
 import com.dingdong.service.UserService;
+import com.dingdong.util.QiniuStore;
 
 @Controller
 public class AdminController {
@@ -92,15 +96,20 @@ public class AdminController {
 
 	// 增加商品Post
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
-	public String addItemPost(Item item, HttpServletRequest request) {
+	public String addItemPost(Item item, HttpServletRequest request, @RequestParam("picture") MultipartFile picture) throws IllegalStateException, IOException {
 		String province = request.getParameter("province");
 		String city = request.getParameter("city");
 		String area = request.getParameter("area");
 		item.setRepertory(province + "-" + city + "-" + area);
+		
+		QiniuStore qiniuStore = new QiniuStore();
+		String name = new Date().getTime() + ".jpg";
+		String pictureUrl = qiniuStore.uploadByte(picture.getBytes(), name);
+		item.setHeadPic(pictureUrl);
 		ItemService service = new ItemService();
 		service.addItem(item);
-		// service.delete(uid);
-		return "manage/sub_item_add";
+		request.setAttribute("info", "添加商品成功");
+		return "manage/sub_item_list";
 	}
 
 }

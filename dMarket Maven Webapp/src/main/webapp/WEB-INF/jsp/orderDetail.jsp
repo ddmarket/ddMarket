@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -21,16 +23,16 @@
    <form action="#" method="post">
    <div class="alter"><hr>
        <ul>            
-           <li>品类编号：<span id="addNumber">#</span>
-           <li>商品名称：<span id="addName">#</span>
-           <li>商品品牌：<span id="addBrand">#</span>
-           <li>所在仓库：<span id="addStore">#</span>
-           <li>商品单价：<span id="addPrice">#</span>
-           <li>商品库存：<span id="addStock">#</span>
-           <li>商品销量：<span>#</span>
-           <li>分类  ID ：<span id="addKind">#</span>
-           <li>是否推荐：<span id="addRec">#</span>
-           <li>商品简介：<span id="addSummary">#</span>
+           <li>品类编号：<span id="addNumber">03</span>
+           <li>商品名称：<span id="addName">维达湿纸巾</span>
+           <li>商品品牌：<span id="addBrand">维达</span>
+           <li>所在仓库：<span id="addStore">湖南-长沙</span>
+           <li>商品单价：<span id="addPrice">4</span>
+           <li>商品库存：<span id="addStock">3253</span>
+           <li>商品销量：<span>89</span>
+           <li>分类  ID ：<span id="addKind">0823</span>
+           <li>是否推荐：<span id="addRec">1</span>
+           <li>商品简介：<span id="addSummary">维达湿纸巾超值 10片装</span>
        </ul>
     </div>
      <div align="center">

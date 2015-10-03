@@ -39,7 +39,7 @@ public class ReceiverService {
 	}
 
 	// 根据用户名查找用户
-	public List findReceiverByUserID(int uid) {
+	public List<Receiver> findReceiverByUserID(int uid) {
 		ReceiverMapperlmp receiverMapperlmp = new ReceiverMapperlmp();
 		return receiverMapperlmp.selectByUserID(uid);
 	}

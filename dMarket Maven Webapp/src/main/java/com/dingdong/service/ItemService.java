@@ -91,4 +91,10 @@ public class ItemService {
 		map.put("Page", page);
 		return itemMapper.findAllItems(map);
 	}
+	
+	
+	public int findLastID(){
+		ItemMapperlmp itemMapper = new ItemMapperlmp();
+		return itemMapper.findLastID();
+	}
 }

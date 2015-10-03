@@ -183,7 +183,8 @@ public class UserController {
 			return "status";
 		}
 		List<Receiver> receiverList = service.findReceiverByUserID(user.getUser_id());
-		// System.out.println(receiverList.get(0).getAddress());
+		System.out.println(receiverList.size());
+		System.out.println(receiverList.get(0).getAddress());
 		request.setAttribute("receiverList", receiverList);
 		return "sub_home_receiver";
 	}

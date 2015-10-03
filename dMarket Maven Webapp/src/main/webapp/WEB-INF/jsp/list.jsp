@@ -114,32 +114,31 @@ strong {
 	<!-- 有数据的情况 -->
 	<c:if test="${not empty  itemList }">
 		<div class="container" style="width:1100px !important;">
-			<div class="row" >
+			<div class="row">
+
 				<c:forEach items="${itemList }" var="i" varStatus="num">
 					<div class="col-xs-3 col-md-3">
-						<a href="itemDetail?iid=${i.item_id }"><img id="r1" src="image/loginBackground.png" alt="图片加载中..."
-							class="img-thumbnail"></a> <strong>￥ ${i.price } </strong> <strong
-							class="s1">销量：${i.sales } </strong><br> <p>${i.name }</p>
+						<a href="itemDetail?iid=${i.item_id }"><img
+							style="width: 250px; height: 250px" id="r1"
+							src=${i.headPic}?imageView2/1/w/250/h/250/q/70/format/jpg
+							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
+							${i.price } </strong> <strong class="s1">销量：${i.sales } </strong><br>
+						<p>${i.name }</p>
 					</div>
-					
- 				</c:forEach>
+				</c:forEach>
+
 			</div>
 		</div>
 	</c:if>
 
-
-	<nav style="text-align: center">
-		<ul class="pagination" style="width:400px !important;">
-			<li id="pre2"><a href="#">&laquo;</a></li>
-			<li id="pageOne2"><a href="#">1</a></li>
-			<li id="pageTwo2"><a href="#">2</a></li>
-			<li id="pagethree2"><a href="#">3</a></li>
-			<li id="pageFour2"><a href="#">4</a></li>
-			<li id="pageFive2"><a href="#">5</a></li>
-			<li id="next2"><a href="#">&raquo;</a></li>
-		</ul>
-	</nav>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<!-- 使用包含子页面的方法 -->
 	<jsp:include page="sub_footer.jsp" />

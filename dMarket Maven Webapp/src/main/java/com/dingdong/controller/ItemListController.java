@@ -47,5 +47,13 @@ public class ItemListController {
 		request.setAttribute("item", item);
 		return "itemDetail";
 	}
+	
+	
+	
+	// 商品详情显示
+		@RequestMapping(value = "/orderDetail", method = RequestMethod.GET)
+		public String orderDetail(HttpServletRequest request) {
+			return "orderDetail";
+		}
 
 }

@@ -11,7 +11,7 @@ import com.dingdong.dao.ItemMapper;
 import com.dingdong.mybatis.MybatisUtil;
 import com.dingdong.pojo.Item;
 
-public class ItemMapperlmp {
+public class ItemMapperlmp implements ItemMapper {
 
 	public boolean addItem(Item item) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
@@ -119,9 +119,15 @@ public class ItemMapperlmp {
 		return itemList;
 	}
 
-	public ItemMapperlmp() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public int findLastID() {
+		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
+		SqlSession session = sqlSessionFactory.openSession();
+		ItemMapper itemMapper = session.getMapper(ItemMapper.class);
+		int lastID = itemMapper.findLastID();
+		session.commit();
+		session.close();
+		return lastID;
 	}
 
 }

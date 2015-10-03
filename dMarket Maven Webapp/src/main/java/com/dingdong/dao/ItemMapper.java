@@ -23,4 +23,6 @@ public interface ItemMapper {
 	public int countItem();
 
 	public List<Item> findAllItems(Map<String, Object> map);
+	
+	public int findLastID();
 }

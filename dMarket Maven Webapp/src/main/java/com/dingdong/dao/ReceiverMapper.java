@@ -9,7 +9,7 @@ public interface ReceiverMapper {
 
 	public boolean deleteReceiverByID(int id);
 
-	public List selectByUserID(int uid);
+	public List<Receiver> selectByUserID(int uid);
 
 	public boolean update(Receiver receiver);
 }
