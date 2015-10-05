@@ -28,7 +28,6 @@
 	<div class="col-md-6" style="margin-left: 10%;">
 		<a href="index"><img src="image/logo.png"></a>
 	</div>
-
 	<br>
 	<br>
 	<br>
@@ -37,33 +36,27 @@
 	<div class="container">
 
 		<div class="shoplist panel panel-warning">
-			<div class="panel-heading">商品信息</div>
+			<div class="panel-heading">订单信息</div>
 			<div class="panel-body">
-				<table class="table">
+				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>商品名称</th>
 							<th>所在仓库</th>
 							<th>单价</th>
 							<th>数量</th>
-							<th>小计</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>文明之光文明之光文明之光文明之光文明之光</td>
-							<td>武汉仓库</td>
-							<td>107</td>
-							<td>1</td>
-							<td>107</td>
-						</tr>
-						<tr>
-							<td>文明之光文明之光</td>
-							<td>武汉仓库</td>
-							<td>10</td>
-							<td>1</td>
-							<td>107</td>
-						</tr>
+						<c:forEach var="i" items="${cart }">
+							<tr class="text-c va-m">
+							<tr>
+								<td>${i.key.name }</td>
+								<td>${i.key.repertory }</td>
+								<td>${i.value }</td>
+								<td>${i.key.price }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 					</tbody>
 				</table>
@@ -111,14 +104,13 @@
 											</div>
 
 											<br> <br>
-											</form>
-											<div class="control-group">
-												<button onclick="addReceiverXHR()" class="btn btn-danger" 
-													style="margin-left: 100px;">确认添加</button>
-												<button class="btn btn-default" data-dismiss="modal">取消添加</button>
+										</form>
+										<div class="control-group">
+											<button onclick="addReceiverXHR()" class="btn btn-danger"
+												style="margin-left: 100px;">确认添加</button>
+											<button class="btn btn-default" data-dismiss="modal">取消添加</button>
+										</div>
 
-											</div>
-										
 									</div>
 								</div>
 							</div>
@@ -127,27 +119,11 @@
 
 						<div class="receiver">
 							<ul>
-								<li>
-									<div>
-										<input name="addr" type="radio" value="addr_0"> <span>收货人1
-										</span><span>收货地址1 </span><span>联系方式1 </span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<input name="addr" type="radio" value="addr_1"> <span>收货人2
-										</span><span>收货地址2 </span><span>联系方式2 </span>
-									</div>
-								</li>
+								<c:forEach var="r" items="${receiverList }">
+									<li>${r.name },${r.address }, ${r.telephone }</li>
+								</c:forEach>
 							</ul>
 						</div>
-					</li>
-					<li>支付方式
-
-						<form action="" method="post">
-							<input name="pay" type="radio" value="">在线支付 <input
-								name="pay" type="radio" value="">货到付款
-						</form>
 					</li>
 				</ul>
 			</div>
@@ -191,19 +167,17 @@
 		});
 
 		function addReceiverXHR() {
-		
-		
-		
-		/* $.post("http://www.baidu.com", {
-				"uid" : '${user.user_id}',
-				"name" : $("#name").val(),
-				"place" : $("#place").val(),
-				"tel" : $("#tel").val()
-			}, function(date) {
-				alert(date);
-			});  */
-				alert($("#name").val());
-			
+
+			/* $.post("http://www.baidu.com", {
+					"uid" : '${user.user_id}',
+					"name" : $("#name").val(),
+					"place" : $("#place").val(),
+					"tel" : $("#tel").val()
+				}, function(date) {
+					alert(date);
+				});  */
+			alert($("#name").val());
+
 		}
 	</script>
 

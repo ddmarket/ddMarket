@@ -16,11 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dingdong.pojo.Admin;
 import com.dingdong.pojo.Classify;
 import com.dingdong.pojo.Item;
-import com.dingdong.pojo.ItemPic;
 import com.dingdong.pojo.Page;
 import com.dingdong.service.AdminService;
 import com.dingdong.service.ClassifyService;
-import com.dingdong.service.ItemPicService;
 import com.dingdong.service.ItemService;
 import com.dingdong.service.UserService;
 import com.dingdong.util.QiniuStore;
@@ -121,6 +119,6 @@ public class AdminController {
 		service.addItem(item);
 
 		request.setAttribute("info", "添加商品成功");
-		return "manage/sub_item_list";
+		return "manage/upload_status";
 	}
 }

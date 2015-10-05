@@ -41,11 +41,10 @@ function show_msg(msg,url){
 			   $('.sub_err').remove();
 			   if(url!='')
 			   {	     
-				  location.href=url;
 			   }		   
 		   },800);	 
 		   
-	 }, "1200");  
+	 }, "9999999");  
 }
 
 //显示加载动画

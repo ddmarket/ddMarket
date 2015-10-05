@@ -188,7 +188,6 @@ hr {
 					</div>
 					<div>
 						<p class="p1">
-							配送至：
 							<!-- 用户地址 -->
 						</p>
 					</div>
@@ -234,15 +233,14 @@ hr {
 					<div class="container">
 						<div class="row">
 							<div>
-								<c:forEach var="ci" items="${cart }">
+								<c:forEach var="i" items="${cart }">
 
-									<h6 class="cartType">商品编号：${ci.key } , 数量：${ci.value}</h6>
+									<p class="cartType">商品：${i.key.name } X ${i.value}</p>
 									<br>
 									<!-- 调用购物车的商品信息 -->
 								</c:forEach>
 
 							</div>
-
 						</div>
 					</div>
 

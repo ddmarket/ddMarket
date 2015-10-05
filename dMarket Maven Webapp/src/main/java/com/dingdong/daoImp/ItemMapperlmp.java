@@ -13,6 +13,7 @@ import com.dingdong.pojo.Item;
 
 public class ItemMapperlmp implements ItemMapper {
 
+	@Override
 	public int addItem(Item item) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		int lastID = 0;
@@ -24,6 +25,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return lastID;
 	}
 
+	@Override
 	public boolean updateItem(Item item) {
 		boolean isUpdate = false;
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
@@ -35,6 +37,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return isUpdate;
 	}
 
+	@Override
 	public boolean deleteItem(int id) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		boolean isdelete = false;
@@ -46,6 +49,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return isdelete;
 	}
 
+	@Override
 	public Item findItemByID(int id) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		Item item = null;
@@ -57,6 +61,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return item;
 	}
 
+	@Override
 	public List<Item> findItemsByName(Map<String, Object> map) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		List<Item> itemList = new ArrayList<Item>();
@@ -68,6 +73,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return itemList;
 	}
 
+	@Override
 	public List<Item> findItemsByClassifyID(Map<String, Object> map) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		List<Item> itemList = new ArrayList<Item>();
@@ -80,6 +86,7 @@ public class ItemMapperlmp implements ItemMapper {
 	}
 
 	// String name, String orderMethod 封装成list作为参数
+	@Override
 	public List<Item> findItemsByNameByOrder(Map<String, Object> map) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		List<Item> itemList = new ArrayList<Item>();
@@ -91,6 +98,7 @@ public class ItemMapperlmp implements ItemMapper {
 		return itemList;
 	}
 
+	@Override
 	public int countItem() {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		int result = 0;
@@ -108,6 +116,7 @@ public class ItemMapperlmp implements ItemMapper {
 	 * @param map
 	 * @return
 	 */
+	@Override
 	public List<Item> findAllItems(Map<String, Object> map) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		List<Item> itemList = new ArrayList<Item>();

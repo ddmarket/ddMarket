@@ -1,8 +1,6 @@
 package com.dingdong.util;
 
 import java.io.File;
-import java.io.InputStream;
-
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;

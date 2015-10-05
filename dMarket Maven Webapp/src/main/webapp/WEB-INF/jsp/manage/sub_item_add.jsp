@@ -13,19 +13,29 @@
 
 
 <%@include file="rs_js_css_import.html"%>
-<script type="text/javascript" src="cityOption/jquery.min.js"></script>
-<script type="text/javascript" src="cityOption/jquery.provincesCity.js"></script>
+
+<script src="hui/js/scripts.js"></script>
 <script type="text/javascript" src="cityOption/provincesData.js"></script>
 
+<link rel="stylesheet" href="hui/css/supersized.css">
+<link href="hui/css/bootstrap.min.css" rel="stylesheet">
+<script src="hui/js/jquery-1.8.2.min.js"></script>
+<script src="hui/js/jquery.form.js"></script>
+<script type="text/javascript" src="hui/js/tooltips.js"></script>
+<script src="hui/js/supersized.3.2.7.min.js"></script>
+<script src="hui/js/scripts.js"></script>
+
+
+<script type="text/javascript" src="cityOption/jquery.min.js"></script>
+<script type="text/javascript" src="cityOption/jquery.provincesCity.js"></script>
 <title>增加商品</title>
 </head>
 <body>
+
 	<div class="pd-20">
 		<form action="addItem" method="post" class="form form-horizontal"
 			enctype="multipart/form-data">
 			<div>
-
-
 				<div class="row cl">
 					<label class="form-label col-2">商品品类：</label>
 					<div class="formControls col-4">
@@ -35,39 +45,16 @@
 							</c:forEach>
 						</select>
 					</div>
-					<br> <label class="form-label col-2">商品销量：</label>
-					<!-- 默认为0 -->
-					<div class="formControls col-4">
-						<input type="text" name="sales" placeholder="" value=""
-							class="input-text" style="width:90%">
-					</div>
-					<br> <label class="form-label col-2">商品库存：</label>
-					<div class="formControls col-4">
-						<input type="text" name="instock" placeholder="" value=""
-							class="input-text" style="width:90%">
-					</div>
-					<br> <label class="form-label col-2">商品单价：</label>
-					<div class="formControls col-4">
-						<input type="text" name="price" placeholder="" value=""
-							class="input-text" style="width:90%"> 元
-					</div>
-					<br> <label class="form-label col-2">商品图片：</label>
-					<div class="formControls col-4">
-						<a class="form-label col-2" onclick="showImg()">选择图片</a>
-					</div>
+				</div>
 
-					<div class="formControls col-4" style="display:none">
-						<input id="imgFile" type="file" name="picture" class="input-file"
-							style="width:90%">
+				<br>
+				<div class="row cl">
+					<label class="form-label col-2">商品品牌：</label>
+					<div class="formControls col-4">
+						<input type="text" name="brand" placeholder="" value=""
+							class="input-text" style="width:90%">
 					</div>
 				</div>
-				<br> <label class="form-label col-2">商品品牌：</label>
-				<div class="formControls col-4">
-					<input type="text" name="brand" placeholder="" value=""
-						class="input-text" style="width:90%">
-				</div>
-				<br> <label class="form-label col-2">所在仓库：</label>
-				<div id="province" class="formControls col-4"></div>
 
 				<br>
 				<div class="row cl">
@@ -77,39 +64,81 @@
 							class="input-text" style="width:90%">
 					</div>
 				</div>
-
 				<div class="row cl">
-					<label class="form-label col-2">是否推荐：</label>
+					<br> <label class="form-label col-2">商品销量：</label>
+					<!-- 默认为0 -->
 					<div class="formControls col-4">
-						<select name="isrecommend">
-							<option value="1">推荐</option>
-							<option selected="selected" value="0">不推荐</option>
-						</select>
+						<input type="text" name="sales" placeholder="" value=""
+							class="input-text" style="width:90%">
 					</div>
 				</div>
+				<br>
 				<div class="row cl">
-					<label class="form-label col-2">商品简介：</label>
-					<div class="formControls col-10">
-						<textarea name="introduction" cols="" rows="" class="textarea"
-							placeholder="请输入商品简介" onKeyUp="textarealength(this,200)"></textarea>
-						<p class="textarea-numberbar">
-							<em class="textarea-length">0</em>/200
-						</p>
+					<label class="form-label col-2">商品库存：</label>
+					<div class="formControls col-4">
+						<input type="text" name="instock" placeholder="" value=""
+							class="input-text" style="width:90%">
 					</div>
+				</div>
+				<br>
+				<div class="row cl">
+					<label class="form-label col-2">商品单价：</label>
+					<div class="formControls col-4">
+						<input type="text" name="price" placeholder="" value=""
+							class="input-text" style="width:90%"> 元
+					</div>
+				</div>
+				<br>
+				<div class="row cl">
+					<label class="form-label col-2">商品图片：</label>
+					<div class="formControls col-4">
+						<a class="form-label col-2" onclick="showImg()">选择图片</a>
+					</div>
+				</div>
+				<div class="formControls col-4" style="display:none">
+					<input id="imgFile" type="file" name="picture" class="input-file"
+						style="width:90%">
 				</div>
 			</div>
+
+			<br> <br>
+			<div class="row cl">
+				<label class="form-label col-2">所在仓库：</label>
+				<div id="province" class="formControls col-4"></div>
+			</div>
+
 
 			<div class="row cl">
-				<div class="col-10 col-offset-2">
-					<button id="btn_upload" class="btn btn-primary radius"
-						type="submit">
-						<i class="Hui-iconfont">&#xe632;</i> 保存
-					</button>
-
-					<button onClick="layer_close();" class="btn btn-default radius"
-						type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<label class="form-label col-2">是否推荐：</label>
+				<div class="formControls col-4">
+					<select name="isrecommend">
+						<option value="1">推荐</option>
+						<option selected="selected" value="0">不推荐</option>
+					</select>
 				</div>
 			</div>
+			<div class="row cl">
+				<label class="form-label col-2">商品简介：</label>
+				<div class="formControls col-10">
+					<textarea name="introduction" cols="" rows="" class="textarea"
+						placeholder="请输入商品简介" onKeyUp="textarealength(this,200)"></textarea>
+					<p class="textarea-numberbar">
+						<em class="textarea-length">0</em>/200
+					</p>
+				</div>
+			</div>
+	</div>
+
+	<div class="row cl">
+		<div class="col-10 col-offset-2">
+			<button id="btn_upload" class="btn btn-primary radius" type="submit" onclick="show_img_load()">
+				<i class="Hui-iconfont">&#xe632;</i> 保存
+			</button>
+
+			<button onClick="layer_close();" class="btn btn-default radius"
+				type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+		</div>
+	</div>
 	</div>
 	</form>
 
@@ -122,9 +151,12 @@
 		$(function() {
 			$("#province").ProvinceCity()
 		});
-		
-		function showImg(){
+
+		function showImg() {
 			$("#imgFile").click();
+		}
+		function show_img_load() {
+			show_msg("商品创建中","");
 		}
 	</script>
 </body>

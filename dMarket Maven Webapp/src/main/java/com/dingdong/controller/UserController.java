@@ -184,9 +184,7 @@ public class UserController {
 			return "login";
 		}
 		List<Receiver> receiverList = service.findReceiverByUserID(user.getUser_id());
-		System.out.println(receiverList.size());
-		System.out.println(receiverList.get(0).getAddress());
-		request.setAttribute("receiverList", receiverList);
+		request.getSession().setAttribute("receiverList", receiverList);
 		return "sub_home_receiver";
 	}
 	
