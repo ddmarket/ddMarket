@@ -37,15 +37,8 @@
     delete from t_order
     where order_id = #{order_id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.dingdong.pojo.Order" >
-    insert into t_order (order_id, user_id, totalAmount, 
-      receiver_id, orderStates, expressInfo, 
-      orderTime)
-    values (#{order_id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{totalamount,jdbcType=DECIMAL}, 
-      #{receiver_id,jdbcType=INTEGER}, #{orderstates,jdbcType=INTEGER}, #{expressinfo,jdbcType=VARCHAR}, 
-      #{ordertime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="createOrder" parameterType="com.dingdong.pojo.Order" >
+  
+  <insert id="createOrder" parameterType="com.dingdong.pojo.Order"   useGeneratedKeys="true" keyProperty="order_id">
     insert into t_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="order_id != null" >

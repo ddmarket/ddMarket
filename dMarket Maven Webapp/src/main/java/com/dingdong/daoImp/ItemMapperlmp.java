@@ -13,15 +13,15 @@ import com.dingdong.pojo.Item;
 
 public class ItemMapperlmp implements ItemMapper {
 
-	public boolean addItem(Item item) {
+	public int addItem(Item item) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
-		boolean isAdded = false;
+		int lastID = 0;
 		SqlSession session = sqlSessionFactory.openSession();
 		ItemMapper itemMapper = session.getMapper(ItemMapper.class);
-		isAdded = itemMapper.addItem(item);
+		lastID = itemMapper.addItem(item);
 		session.commit();
 		session.close();
-		return isAdded;
+		return lastID;
 	}
 
 	public boolean updateItem(Item item) {

@@ -23,7 +23,7 @@
          <c:if test="${not empty user}">  
 		    <li id="home"><a target="_blank" href="#" >${ user.name}, 欢迎回来</a></li>
             <li id="home"><a target="_blank" href="home" >个人中心</a></li>
-            <li id="cart"><a target="_blank" href="shoppingBox">我的购物车</a></li>
+            <li id="cart"><a target="_blank" href="submitOrder">我的购物车</a></li>
         	<li id="logout"><a target="_blank" href="logout" >注销登录</a></li>
          </c:if> 
          </ul>

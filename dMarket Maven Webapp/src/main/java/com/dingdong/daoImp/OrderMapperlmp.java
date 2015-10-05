@@ -14,15 +14,14 @@ import com.dingdong.pojo.Order;
 
 public class OrderMapperlmp {
 
-	public boolean createOrder(Order Order) {
-		boolean isAdd = false;
+	public int createOrder(Order Order) {
 		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
-		isAdd = orderMapper.createOrder(Order);
+		int lastID = orderMapper.createOrder(Order);
 		sqlSession.commit();
 		sqlSession.close();
-		return isAdd;
+		return lastID;
 	}
 
 	public boolean updateOrder(Order Order) {

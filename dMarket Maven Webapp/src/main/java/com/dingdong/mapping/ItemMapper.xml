@@ -23,15 +23,6 @@
   <sql id="Blob_Column_List" >
     introduction
   </sql>
-  
-  
-  
-   <select id="findLastID" resultType="int"  >
-     select max(item_id) from t_item;
-  </select>
-  
-  
-  
   <select id="findItemByID" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -41,9 +32,7 @@
     where item_id = #{item_id,jdbcType=INTEGER}
   </select>
   
-  
-  <!-- 查询所有注册会员 -->
-  <select id="findAllItems" resultMap="ResultMapWithBLOBs" >
+  <select id="findAllItems" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -51,7 +40,6 @@
     from t_item
     order by item_id
   </select>
-  
  <select id="findItemsByName" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />
@@ -101,7 +89,7 @@
     delete from t_item
     where item_id = #{item_id,jdbcType=INTEGER}
   </delete>
-  <insert id="addItem" parameterType="com.dingdong.pojo.Item" >
+  <insert id="addItem" parameterType="com.dingdong.pojo.Item"  useGeneratedKeys="true" keyProperty="item_id" >
     insert into t_item (item_id, classified_id, name, 
       brand, head_pic, repertory, 
       price, instock, sales, isRecommend, introduction

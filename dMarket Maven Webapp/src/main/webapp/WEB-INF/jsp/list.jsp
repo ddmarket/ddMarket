@@ -102,7 +102,7 @@ strong {
 
 
 	<!-- 所有商品 -->
-	<h2 style="color: #0070C0; margin-left: 20px;font-family:微软雅黑">搜索结果:${fn:length(itemList)}条</h2>
+	<h2 style="color: #0070C0; margin-left: 20px;font-family:微软雅黑">商品列表:${fn:length(itemList)}条</h2>
 	<hr>
 
 

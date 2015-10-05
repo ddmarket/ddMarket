@@ -24,6 +24,8 @@
 		<form action="addItem" method="post" class="form form-horizontal"
 			enctype="multipart/form-data">
 			<div>
+
+
 				<div class="row cl">
 					<label class="form-label col-2">商品品类：</label>
 					<div class="formControls col-4">
@@ -33,57 +35,50 @@
 							</c:forEach>
 						</select>
 					</div>
-
-					<label class="form-label col-2">商品名称：</label>
-					<div class="formControls col-4">
-						<input type="text" name="name" placeholder="" value=""
-							class="input-text" style="width:90%">
-					</div>
-
-
-					<label class="form-label col-2">商品图片：</label>
-					 
-					<div class="formControls col-4" >
-						<a class="form-label col-2" onclick="showImg()" >选择图片</a>
-					</div>
-					
-					<div class="formControls col-4" style="display:none">
-						<input id="imgFile" type="file" name="picture" class="input-file"
-							style="width:90%">
-					</div>
-
-
-				</div>
-				<div class="row cl">
-					<label class="form-label col-2">商品品牌：</label>
-					<div class="formControls col-4">
-						<input type="text" name="brand" placeholder="" value=""
-							class="input-text" style="width:90%">
-					</div>
-					<label class="form-label col-2">所在仓库：</label>
-					<div id="province" class="formControls col-4"></div>
-				</div>
-				<div class="row cl">
-					<label class="form-label col-2">商品单价：</label>
-					<div class="formControls col-4">
-						<input type="text" name="price" placeholder="" value=""
-							class="input-text" style="width:90%"> 元
-					</div>
-					<label class="form-label col-2">商品库存：</label>
-					<div class="formControls col-4">
-						<input type="text" name="instock" placeholder="" value=""
-							class="input-text" style="width:90%">
-					</div>
-				</div>
-
-				<div class="row cl">
-					<label class="form-label col-2">商品销量：</label>
+					<br> <label class="form-label col-2">商品销量：</label>
 					<!-- 默认为0 -->
 					<div class="formControls col-4">
 						<input type="text" name="sales" placeholder="" value=""
 							class="input-text" style="width:90%">
 					</div>
-					
+					<br> <label class="form-label col-2">商品库存：</label>
+					<div class="formControls col-4">
+						<input type="text" name="instock" placeholder="" value=""
+							class="input-text" style="width:90%">
+					</div>
+					<br> <label class="form-label col-2">商品单价：</label>
+					<div class="formControls col-4">
+						<input type="text" name="price" placeholder="" value=""
+							class="input-text" style="width:90%"> 元
+					</div>
+					<br> <label class="form-label col-2">商品图片：</label>
+					<div class="formControls col-4">
+						<a class="form-label col-2" onclick="showImg()">选择图片</a>
+					</div>
+
+					<div class="formControls col-4" style="display:none">
+						<input id="imgFile" type="file" name="picture" class="input-file"
+							style="width:90%">
+					</div>
+				</div>
+				<br> <label class="form-label col-2">商品品牌：</label>
+				<div class="formControls col-4">
+					<input type="text" name="brand" placeholder="" value=""
+						class="input-text" style="width:90%">
+				</div>
+				<br> <label class="form-label col-2">所在仓库：</label>
+				<div id="province" class="formControls col-4"></div>
+
+				<br>
+				<div class="row cl">
+					<label class="form-label col-2">商品名称：</label>
+					<div class="formControls col-4">
+						<input type="text" name="name" placeholder="" value=""
+							class="input-text" style="width:90%">
+					</div>
+				</div>
+
+				<div class="row cl">
 					<label class="form-label col-2">是否推荐：</label>
 					<div class="formControls col-4">
 						<select name="isrecommend">
@@ -92,18 +87,11 @@
 						</select>
 					</div>
 				</div>
-
-				
-
-
-
 				<div class="row cl">
 					<label class="form-label col-2">商品简介：</label>
 					<div class="formControls col-10">
 						<textarea name="introduction" cols="" rows="" class="textarea"
-							placeholder="说点什么...最少输入10个字符" datatype="*10-100"
-							dragonfly="true" nullmsg="备注不能为空！"
-							onKeyUp="textarealength(this,200)"></textarea>
+							placeholder="请输入商品简介" onKeyUp="textarealength(this,200)"></textarea>
 						<p class="textarea-numberbar">
 							<em class="textarea-length">0</em>/200
 						</p>
@@ -124,6 +112,9 @@
 			</div>
 	</div>
 	</form>
+
+	<hr>
+
 
 
 

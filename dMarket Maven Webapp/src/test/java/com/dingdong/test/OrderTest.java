@@ -23,7 +23,10 @@ public class OrderTest {
 		order.setTotalamount(100L);
 		order.setUser_id(2);
 		OrderService orderService = new OrderService();
+		
+		System.out.println("自增测试");
 		orderService.createOrder(order);
+		System.out.println(order.getOrder_id());
 	}
 
 	/**

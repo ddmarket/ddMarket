@@ -6,7 +6,7 @@ import java.util.Map;
 import com.dingdong.pojo.Item;
 
 public interface ItemMapper {
-	public boolean addItem(Item item);
+	public int addItem(Item item);
 
 	public boolean updateItem(Item item);
 

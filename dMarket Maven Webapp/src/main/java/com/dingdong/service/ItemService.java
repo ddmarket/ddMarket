@@ -10,7 +10,7 @@ import com.dingdong.pojo.Page;
 
 public class ItemService {
 
-	public boolean addItem(Item item) {
+	public int addItem(Item item) {
 		ItemMapperlmp itemMapper = new ItemMapperlmp();
 		return itemMapper.addItem(item);
 	}
@@ -32,6 +32,11 @@ public class ItemService {
 		return itemMapper.findItemByID(id);
 	}
 
+	//重载一个int版
+	public Item findItemByID(int id) {
+		ItemMapperlmp itemMapper = new ItemMapperlmp();
+		return itemMapper.findItemByID(id);
+	}
 	/*
 	 * 根据名称查找商品并进行分页处理
 	 */

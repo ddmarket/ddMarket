@@ -41,6 +41,8 @@ public class ItemTest {
 		item.setName("小米手机");
 		ItemService itemService = new ItemService();
 		itemService.addItem(item);
+
+		System.out.println("自增主键测试："+item.getItem_id());
 	}
 
 	public static void main(String[] args) {

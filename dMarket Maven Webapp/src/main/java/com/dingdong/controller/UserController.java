@@ -174,13 +174,14 @@ public class UserController {
 		return "sub_home_collection";
 	}
 
+	
+	
 	@RequestMapping(value = "/sub_home_receiver", method = RequestMethod.GET)
 	public String subHomeReceiver(HttpServletRequest request) {
 		ReceiverService service = new ReceiverService();
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
-			request.setAttribute("info", "访问异常，请<a href='login'>重新登录</a>");
-			return "status";
+			return "login";
 		}
 		List<Receiver> receiverList = service.findReceiverByUserID(user.getUser_id());
 		System.out.println(receiverList.size());
@@ -188,5 +189,27 @@ public class UserController {
 		request.setAttribute("receiverList", receiverList);
 		return "sub_home_receiver";
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/addReceiverPost")
+	public String addReceiverPost(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "login";
+		}
+		ReceiverService service = new ReceiverService();
+		Receiver receiver = new Receiver();
+		
+		receiver.setAddress(request.getParameter("address"));
+		receiver.setTelephone(request.getParameter("tel"));
+		receiver.setName(request.getParameter("name"));
+		service.addReceiver(receiver);
+		return "submitOrder";
+	}
+
+	
 
 }

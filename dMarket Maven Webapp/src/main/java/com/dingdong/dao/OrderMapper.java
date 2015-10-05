@@ -7,7 +7,8 @@ import java.util.Map;
 import com.dingdong.pojo.Order;
 
 public interface OrderMapper {
-	public boolean createOrder(Order Order);
+	
+	public int createOrder(Order Order);
 
 	public boolean updateOrder(Order Order);
 

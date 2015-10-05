@@ -47,6 +47,92 @@ hr {
 	margin-top: 20px;
 	font-family: 幼圆;
 }
+
+/*主要面板*/
+.panel {
+	background-color: #fff;
+	border: solid 1px transparent
+}
+
+.panel-header {
+	border-bottom: solid 1px transparent;
+	padding: 8px 15px;
+	font-size: 14px;
+	font-weight: 700
+} /*面板标题*/
+.panel-body {
+	padding: 15px
+} /*面板内容*/
+.panel-footer {
+	background-color: #f5f5f5;
+	border-top: 1px solid #ddd;
+	padding: 5px 20px
+} /*面板页脚*/
+/*默认面板*/
+.panel-default {
+	border-color: #ddd;
+}
+
+.panel-default>.panel-header {
+	border-color: #ddd;
+	background-color: #f5f5f5;
+	color: #444
+}
+
+/*主要面板*/
+.panel-primary {
+	border-color: #5a98de;
+}
+
+.panel-primary>.panel-header {
+	border-color: #5a98de;
+	background-color: #5a98de;
+	color: #fff
+}
+
+/*次要面板*/
+.panel-secondary {
+	border-color: #3bb4f2;
+}
+
+.panel-secondary>.panel-header {
+	border-color: #3bb4f2;
+	background-color: #3bb4f2;
+	color: #fff
+}
+
+/*成功面板*/
+.panel-success {
+	border-color: #5eb95e;
+}
+
+.panel-success>.panel-header {
+	border-color: #5eb95e;
+	background-color: #5eb95e;
+	color: #fff
+}
+
+/*警告面板*/
+.panel-warning {
+	border-color: #f37b1d;
+}
+
+.panel-warning>.panel-header {
+	border-color: #f37b1d;
+	background-color: #f37b1d;
+	color: #fff
+}
+
+/*危险面板*/
+.panel-danger {
+	border-color: #dd514c;
+}
+
+.panel-danger>.panel-header {
+	border-color: #dd514c;
+	background-color: #dd514c;
+	color: #fff
+}
 </style>
 </head>
 
@@ -148,25 +234,23 @@ hr {
 					<div class="container">
 						<div class="row">
 							<div>
-								<c:forEach var="ci" items="#{cart }">
-									<jsp:useBean class="com.dingdong.service.ItemService"
-										id="service">
-										<%
-											Item item = service.findItemByID(((Item) request
-															.getAttribute("item")).getItem_id().toString());
-										%>
+								<c:forEach var="ci" items="${cart }">
 
-										<h6>
-											<%=item.getName()%>
-											， 数量：${ci.value}
-										</h6>
-										<br>
-										<!-- 调用购物车的商品信息 -->
-									</jsp:useBean>
+									<h6 class="cartType">商品编号：${ci.key } , 数量：${ci.value}</h6>
+									<br>
+									<!-- 调用购物车的商品信息 -->
 								</c:forEach>
 
 							</div>
+
 						</div>
+					</div>
+
+					<div id="gotoCart">
+						<button id="shoppingBtn" type="button" onclick="gotoCart()"
+							class="btn btn-danger btn4">
+							<img src="image/shopping.png">去结算
+						</button>
 					</div>
 				</div>
 			</div>
@@ -175,37 +259,44 @@ hr {
 	<br>
 	<hr>
 	<br>
+
+
 	<!-- 商品详情页面 -->
 	<div class="container"
 		style="margin-left:10%; width: 1200px !important; position: center">
 
-		<p>商品介绍</p>
+		<div class="panel panel-success">
+			<div class="panel-header">产品简介</div>
+			<div class="panel-body">${item.introduction }</div>
+		</div>
+		<br> <br>
+
+		<div class="panel panel-warning">
+			<div class="panel-header">产品大图</div>
+			<div class="panel-body">
+				<img alt="产品大图"
+					src=${item.headPic}?imageView2/1/w/800/h/800/q/90/format/jpg>
+			</div>
+		</div>
+
+		<br> <br> <br> <br> <br> <br>
+
+		<!-- 使用包含子页面的方法 -->
+		<jsp:include page="sub_footer.jsp" />
+		<br>
 
 
+		<script type="text/javascript">
+			function addCart() {
+				var num = $("#qty_item_1").val();
+				var id = '${item.item_id}';
+				var url = "addCart?num=" + num + "&id=" + id;
+				window.location.href = url;
+			};
 
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<!-- 使用包含子页面的方法 -->
-	<jsp:include page="sub_footer.jsp" />
-	<br>
-
-
-	<script type="text/javascript">
-		function addCart() {
-			var num = $("#qty_item_1").val();
-			var id = '${item.item_id}';
-			var url = "addCart?num=" + num + "&id=" + id;
-			window.location.href = url;
-		};
-	</script>
-
-
+			function gotoCart() {
+				window.location.href = "gotoCart";
+			};
+		</script>
 </body>
 </html>

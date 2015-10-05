@@ -16,7 +16,7 @@ public class OrderService {
 	 * @param Order
 	 * @return
 	 */
-	public boolean createOrder(Order Order) {
+	public int createOrder(Order Order) {
 		OrderMapperlmp orderMapperlmp = new OrderMapperlmp();
 		return orderMapperlmp.createOrder(Order);
 	}
