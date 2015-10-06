@@ -26,6 +26,14 @@
     where user_id = #{user_id,jdbcType=INTEGER}
     order by orderTime
   </select>
+  
+  <select id="findAllOrders" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    order by orderTime
+  </select>
+  
    <select id="findOrdersByUser_idAndDate" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />

@@ -96,4 +96,15 @@ public class OrderMapperlmp {
 		return null;
 	}
 
+	public List<Order> findAllOrders() {
+		List<Order> list = new ArrayList<Order>();
+		SqlSessionFactory sqlSessionFactory = MybatisUtil.getSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		list = orderMapper.findAllOrders();
+		sqlSession.commit();
+		sqlSession.close();
+		return list;
+	}
+
 }

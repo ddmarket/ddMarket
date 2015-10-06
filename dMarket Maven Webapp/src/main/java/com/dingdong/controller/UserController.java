@@ -18,11 +18,10 @@ import com.dingdong.service.UserService;
 
 @Controller
 public class UserController {
-	UserService service = new UserService();
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(HttpServletRequest request) {
-
+		UserService service = new UserService();
 		HttpSession httpSession = request.getSession();
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -174,8 +173,6 @@ public class UserController {
 		return "sub_home_collection";
 	}
 
-	
-	
 	@RequestMapping(value = "/sub_home_receiver", method = RequestMethod.GET)
 	public String subHomeReceiver(HttpServletRequest request) {
 		ReceiverService service = new ReceiverService();
@@ -183,14 +180,12 @@ public class UserController {
 		if (user == null) {
 			return "login";
 		}
-		List<Receiver> receiverList = service.findReceiverByUserID(user.getUser_id());
+		List<Receiver> receiverList = service.findReceiverByUserID(user
+				.getUser_id());
 		request.getSession().setAttribute("receiverList", receiverList);
 		return "sub_home_receiver";
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/addReceiverPost")
 	public String addReceiverPost(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -200,14 +195,12 @@ public class UserController {
 		}
 		ReceiverService service = new ReceiverService();
 		Receiver receiver = new Receiver();
-		
+
 		receiver.setAddress(request.getParameter("address"));
 		receiver.setTelephone(request.getParameter("tel"));
 		receiver.setName(request.getParameter("name"));
 		service.addReceiver(receiver);
 		return "submitOrder";
 	}
-
-	
 
 }

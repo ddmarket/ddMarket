@@ -38,7 +38,7 @@
     ,
     <include refid="Blob_Column_List" />
     from t_item
-    order by item_id
+    order by item_id desc
   </select>
  <select id="findItemsByName" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
@@ -51,7 +51,7 @@
     	 	and name like '%' #{itemName} '%' or introduction like '%' #{itemName} '%'
     	 </if>
     </where>
-    order by item_id limit #{page.dbIndex},#{page.dbNumber}
+    order by item_id desc limit #{page.dbIndex},#{page.dbNumber}
   </select>
   
   <select id="findItemsByNameByOrder" resultMap="BaseResultMap" parameterType="java.util.Map" >
@@ -79,7 +79,7 @@
     	 	and classified_id = #{ClassfyID}
     	 </if>
     </where>
-    order by item_id limit #{page.dbIndex},#{page.dbNumber}
+    order by item_id desc limit #{page.dbIndex},#{page.dbNumber}
   </select>
    <select id="countItem" resultType="int">
     select count(*)

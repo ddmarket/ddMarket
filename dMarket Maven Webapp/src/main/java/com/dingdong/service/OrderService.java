@@ -88,4 +88,10 @@ public class OrderService {
 		return null;
 	}
 
+	public List finAllOrders() {
+		OrderMapperlmp orderMapperlmp = new OrderMapperlmp();
+		List<Order> orderList = orderMapperlmp.findAllOrders();
+		return orderList;
+	}
+
 }

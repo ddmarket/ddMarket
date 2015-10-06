@@ -20,6 +20,7 @@ import com.dingdong.pojo.Page;
 import com.dingdong.service.AdminService;
 import com.dingdong.service.ClassifyService;
 import com.dingdong.service.ItemService;
+import com.dingdong.service.OrderService;
 import com.dingdong.service.UserService;
 import com.dingdong.util.QiniuStore;
 
@@ -76,14 +77,28 @@ public class AdminController {
 		request.getSession().setAttribute("itemList", itemList);
 		return "manage/sub_items_list";
 	}
+	
+	
+	
+	//查看所有订单
+	@RequestMapping(value = "/sub_orders_list", method = RequestMethod.GET)
+	public String subOrdersList(HttpServletRequest request) {
+		OrderService service = new OrderService();
+		Page page = new Page();
+		page.setPageNumber(Integer.MAX_VALUE);
+		List orderList = service.finAllOrders();
+		request.getSession().setAttribute("orderList", orderList);
+		return "manage/sub_orders_list";
+	}
+	
 
-	// TODO TODO
+
 	// 删除用户
 	@RequestMapping(value = "/deleteUser/{uid}", method = RequestMethod.GET)
-	public void deleteUser(@PathVariable("uid") String uid) {
+	public String deleteUser(@PathVariable("uid") String uid) {
 		UserService service = new UserService();
-		// service.delete(uid);
-		// TODO Error 重定向次数太多
+		 service.delete(uid);
+		 return "redirect:manage/sub_users_list";
 	}
 
 	// 跳转到添加页面

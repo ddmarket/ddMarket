@@ -30,4 +30,6 @@ public interface OrderMapper {
 
 	// 管理员用
 	public List<Order> findOrdersByDate(Date date);
+
+	public List<Order> findAllOrders();
 }

@@ -10,26 +10,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-<%@include file="rs_js_css_import.html" %>
+<%@include file="rs_js_css_import.html"%>
 
 <title>叮咚超市后台管理系统</title>
 </head>
 <body>
 	<header class="Hui-header cl">
-		<a class="Hui-logo l" title="H-ui.admin v2.3" href="menu">叮咚</a> <a
+		<a class="Hui-logo l" title="H-ui.admin v2.3" href="index">叮咚</a> <a
 			class="Hui-logo-m l" href="#" title="H-ui.admin">***</a> <span
 			class="Hui-subtitle l">--后台管理系统</span>
 		<ul class="Hui-userbar">
 			<li>${ admin.name}</li>
-			<li class="dropDown dropDown_hover">
-			<a href="#"	class="dropDown_A">管理员</a>
+			<li class="dropDown dropDown_hover"><a href="#"
+				class="dropDown_A">管理员</a>
 				<ul class="dropDown-menu radius box-shadow">
 					<li><a href="#">*退出</a></li>
 				</ul></li>
-			
+
 
 			<li id="Hui-skin" class="dropDown right dropDown_hover"><a
 				href="javascript:;" title="换肤"><i class="Hui-iconfont"
@@ -57,42 +55,39 @@
 					<ul>
 						<li><a _href="sub_items_list" href="javascript:void(0)">查看商品</a></li>
 					</ul>
-					
+
 					<ul>
 						<li><a _href="sub_item_add" href="javascript:void(0)">新品上架</a></li>
 					</ul>
-					
-					<ul>
-						<li><a _href="product-list.html" href="javascript:void(0)">销量分析</a></li>
-					</ul>
-					
+
+
 				</dd>
 			</dl>
 			<dl id="menu-comments">
 				<dt>
-					<i class="Hui-iconfont">&#xe622;</i> 评论管理<i
+					<i class="Hui-iconfont">&#xe622;</i> *评论管理<i
 						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="feedback-list.html" href="javascript:void(0)">查看评论</a></li>
+						<li><a _href="feedback-list.html" href="javascript:void(0)">*查看评论</a></li>
 					</ul>
-					
+
 					<ul>
-						<li><a _href="feedback-list.html" href="javascript:void(0)">管理评论</a></li>
+						<li><a _href="feedback-list.html" href="javascript:void(0)">*管理评论</a></li>
 					</ul>
 				</dd>
 			</dl>
 			<dl id="menu-member">
 				<dt>
-					<i class="Hui-iconfont">&#xe60d;</i> 会员管理<i
+					<i class="Hui-iconfont">&#xe60d;</i>会员管理<i
 						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>
 						<li><a _href="sub_users_list" href="javascript:;">所有会员</a></li>
 					</ul>
-					
+
 					<ul>
 						<li><a _href="sub_users_list" href="javascript:;">*会员积分</a></li>
 					</ul>
@@ -105,7 +100,7 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="order-list.html" href="javascript:;">所有订单</a></li>
+						<li><a _href="sub_orders_list" href="javascript:;">所有订单</a></li>
 					</ul>
 
 					<ul>
