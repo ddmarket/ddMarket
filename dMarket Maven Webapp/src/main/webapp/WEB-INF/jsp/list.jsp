@@ -53,17 +53,17 @@ strong {
 
 
 
-	<div class="col-md-6 col-md-offset-5" style="width:500px !important;">
-		<form action="#" method="post"></form>
-		<div class="input-group">
-			<input id="searchGood" type="text" class="form-control"
-				placeholder="Search for..."> <span class="input-group-btn">
-				<button id="searchBtn" class="btn btn-primary" type="button">搜索</button>
-			</span>
-		</div>
+	<!-- 搜索框 -->
+	<div class="col-md-6" style="width: 500px;position: center">
+		<form action="search" method="get">
+			<div class="input-group">
+				<input name="key" type="text" class="form-control"
+					placeholder="搜索商品"> <span class="input-group-btn">
+					<button id="searchBtn" class="btn btn-primary" type="button">搜索</button>
+				</span>
+			</div>
 		</form>
 	</div>
-	<!-- /.col-lg-6 -->
 	<br>
 	<br>
 

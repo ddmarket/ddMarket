@@ -39,13 +39,25 @@ public class ItemListController {
 				&& !request.getParameter("currentPage").equals("")) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-
 		ItemService service = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(currentPage);
 		// TODO 有待优化
 		List<Item> itemList = service.findItemsByClassifyID(classifyID, page);
 		// List<Item> itemList = service.findAllItems(page);
+		request.setAttribute("itemList", itemList);
+		return "list";
+	}
+	
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String searchList(@RequestParam String key,HttpServletRequest request) {
+		int currentPage = 0;
+		ItemService service = new ItemService();
+		Page page = new Page();
+		page.setCurrentPage(currentPage);
+		// TODO 有待优化
+		List<Item> itemList = service.findItemsByName(key, page);
 		request.setAttribute("itemList", itemList);
 		return "list";
 	}

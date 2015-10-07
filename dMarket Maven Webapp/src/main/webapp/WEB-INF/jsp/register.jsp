@@ -41,7 +41,6 @@
 						placeholder="手机号" required autofocus><br>
 					<br> <input type="email" name="email" class="form-control"
 						placeholder="电子邮箱" required autofocus><br>
-					<br> <img src="##"><a href="##">看不清楚，换一张</a><br>
 					<br>
 					<div class="checkbox">
 						<label> <input type="checkbox" value="接受"><a

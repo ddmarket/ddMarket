@@ -32,21 +32,19 @@
 			<div class="col-md-6">
 				<a href="index"><img src="image/logo.png"></a>
 			</div>
-			<div class="col-md-6">
 
-				<!-- 搜索框 -->
-				<form action="#" method="get">
+			<!-- 搜索框 -->
+			<div class="col-md-6">
+				<form action="search" method="get">
 					<div class="input-group">
-						<input id="searchGood" type="text" class="form-control"
-							placeholder="Search for..."> <span
-							class="input-group-btn">
+						<input name="key" type="text" class="form-control"
+							placeholder="搜索商品"> <span class="input-group-btn">
 							<button id="searchBtn" class="btn btn-primary" type="button">搜索</button>
 						</span>
 					</div>
-					<!-- /input-group -->
 				</form>
-
 			</div>
+
 		</div>
 	</div>
 
