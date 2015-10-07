@@ -4,7 +4,7 @@ public class Page {
 	private int totalNumber;// 总条数
 	private int currentPage;// 目前页
 	private int totalPage;// 总页数
-	private int pageNumber = 10;// 每页显示条数
+	private int pageNumber = 50;// 每页显示条数
 	private int dbIndex;// 从第几条开始取，limit中的参数
 	private int dbNumber;// 每页显示条数，limit中的参数
 

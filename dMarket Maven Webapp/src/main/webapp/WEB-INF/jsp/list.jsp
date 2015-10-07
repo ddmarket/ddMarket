@@ -72,6 +72,41 @@ strong {
 	<hr>
 	<div class="container" style="width:1100px !important;">
 	
+					<div class="col-xs-3 col-md-3">
+						<a href="itemDetail?iid=35"><img
+							style="width: 250px; height: 250px" id="r1"
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444149032303.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
+							156 </strong> <strong class="s1">销量：100 </strong><br>
+						<p>牛奶</p>
+					</div>
+				
+					<div class="col-xs-3 col-md-3">
+						<a href="itemDetail?iid=34"><img
+							style="width: 250px; height: 250px" id="r1"
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444148961853.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
+							156 </strong> <strong class="s1">销量：100 </strong><br>
+						<p>哇哈哈酸奶</p>
+					</div>
+				
+					<div class="col-xs-3 col-md-3">
+						<a href="itemDetail?iid=33"><img
+							style="width: 250px; height: 250px" id="r1"
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444148850796.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
+							156 </strong> <strong class="s1">销量：100 </strong><br>
+						<p>利益优酸乳牛奶</p>
+					</div>
+				
+					<div class="col-xs-3 col-md-3">
+						<a href="itemDetail?iid=32"><img
+							style="width: 250px; height: 250px" id="r1"
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444148766674.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
+							134 </strong> <strong class="s1">销量：454 </strong><br>
+						<p>牛奶</p>
+					</div>
 	
 	</div>
 
