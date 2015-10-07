@@ -58,7 +58,7 @@
 						.open(
 								'orderDetail?oid='+oid,
 								'',
-								'height=600,width=800,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+								'height=600,width=800,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
 			};
 		</script>
 

@@ -49,7 +49,8 @@ public class ItemTest {
 		ItemService itemService = new ItemService();
 		Page page = new Page();
 		page.setCurrentPage(1);
-		List<Item> list = itemService.findItemsByName("小米", page);
+		List<Item> list = itemService.findItemsByName("iPhone", page);
+		System.out.println(list.toString());
 		System.out.println(list.size());
 
 	}

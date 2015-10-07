@@ -33,7 +33,7 @@ li {
 
 
 <body>
-	<h1 align="center">订单详细信息</h1>
+	<h1 align="center">订单详情</h1>
 	<div class="alter">
 		<hr>
 

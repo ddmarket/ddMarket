@@ -67,18 +67,18 @@ strong {
 	<br>
 	<br>
 
-	<!-- 热销推荐 -->
+	<!-- 热销推荐--fade -->
 	<h2 style="color: #0070C0; margin-left: 20px;font-family:微软雅黑">热销推荐</h2>
 	<hr>
 	<div class="container" style="width:1100px !important;">
 	
 					<div class="col-xs-3 col-md-3">
-						<a href="itemDetail?iid=35"><img
+						<a href="itemDetail?iid=39"><img
 							style="width: 250px; height: 250px" id="r1"
-							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444149032303.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444149601325.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
 							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
 							156 </strong> <strong class="s1">销量：100 </strong><br>
-						<p>牛奶</p>
+						<p>鲜花</p>
 					</div>
 				
 					<div class="col-xs-3 col-md-3">
@@ -100,12 +100,12 @@ strong {
 					</div>
 				
 					<div class="col-xs-3 col-md-3">
-						<a href="itemDetail?iid=32"><img
+						<a href="itemDetail?iid=43"><img
 							style="width: 250px; height: 250px" id="r1"
-							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444148766674.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
+							src=http://7xn0yn.com1.z0.glb.clouddn.com/1444218753371.jpg?imageView2/1/w/250/h/250/q/70/format/jpg
 							alt="图片加载中..." class="img-thumbnail"></a> <strong>￥
-							134 </strong> <strong class="s1">销量：454 </strong><br>
-						<p>牛奶</p>
+							28 </strong> <strong class="s1">销量：32 </strong><br>
+						<p>小银鱼</p>
 					</div>
 	
 	</div>

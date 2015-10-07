@@ -148,7 +148,7 @@ hr {
 				<a href="index"><img src="image/logo.png"></a>
 			</div>
 			<!-- 搜索框 -->
-		<div class="col-md-6" style="width: 500px;position: center">
+			<div class="col-md-6" style="width: 500px;position: center">
 				<form action="search" method="get">
 					<div class="input-group">
 						<input name="key" type="text" class="form-control"
@@ -233,7 +233,7 @@ hr {
 							<div>
 								<c:forEach var="i" items="${cart }">
 
-									<p class="cartType">商品：${i.key.name } X ${i.value}</p>
+									<p >${i.key.name }  X  ${i.value}</p>
 									<br>
 									<!-- 调用购物车的商品信息 -->
 								</c:forEach>
@@ -275,7 +275,13 @@ hr {
 			</div>
 		</div>
 
-		<br> <br> <br> <br> <br> <br>
+		<br> <br>
+
+		<div class="panel panel-danger">
+			<div class="panel-header">客户评论</div>
+			<div class="panel-body">暂无评论！</div>
+		</div>
+		<br> <br>
 
 		<!-- 使用包含子页面的方法 -->
 		<jsp:include page="sub_footer.jsp" />
@@ -283,16 +289,16 @@ hr {
 
 
 		<script type="text/javascript">
-			function addCart() {
-				var num = $("#qty_item_1").val();
-				var id = '${item.item_id}';
-				var url = "addCart?num=" + num + "&id=" + id;
-				window.location.href = url;
-			};
+				function addCart() {
+					var num = $("#qty_item_1").val();
+					var id = '${item.item_id}';
+					var url = "addCart?num=" + num + "&id=" + id;
+					window.location.href = url;
+				};
 
-			function submitOrder() {
-				window.location.href = "submitOrder";
-			};
-		</script>
+				function submitOrder() {
+					window.location.href = "submitOrder";
+				};
+			</script>
 </body>
 </html>

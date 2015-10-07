@@ -63,6 +63,8 @@
 
 				</dd>
 			</dl>
+			
+			<!-- 
 			<dl id="menu-comments">
 				<dt>
 					<i class="Hui-iconfont">&#xe622;</i> *评论管理<i
@@ -78,6 +80,8 @@
 					</ul>
 				</dd>
 			</dl>
+			
+			 -->
 			<dl id="menu-member">
 				<dt>
 					<i class="Hui-iconfont">&#xe60d;</i>会员管理<i
