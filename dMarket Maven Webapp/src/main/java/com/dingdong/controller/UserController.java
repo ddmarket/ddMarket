@@ -195,12 +195,12 @@ public class UserController {
 		}
 		ReceiverService service = new ReceiverService();
 		Receiver receiver = new Receiver();
-
-		receiver.setAddress(request.getParameter("address"));
+		receiver.setUser_id(Integer.parseInt(request.getParameter("uid")));
+		receiver.setAddress(request.getParameter("place"));
 		receiver.setTelephone(request.getParameter("tel"));
 		receiver.setName(request.getParameter("name"));
 		service.addReceiver(receiver);
-		return "submitOrder";
+		return "status";
 	}
 
 }

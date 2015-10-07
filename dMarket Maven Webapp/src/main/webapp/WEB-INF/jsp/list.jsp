@@ -71,32 +71,8 @@ strong {
 	<h2 style="color: #0070C0; margin-left: 20px;font-family:微软雅黑">热销推荐</h2>
 	<hr>
 	<div class="container" style="width:1100px !important;">
-		<div class="row">
-			<div class="col-xs-3 col-md-3">
-				<a href="goodsInfo.jsp"><img id="r1" src="image/c1.png"
-					alt="..." class="img-thumbnail"></a> <strong>￥280.00 </strong><strong
-					class="s1">销量：500</strong><br> <a href="goodsInfo.jsp">润帛2015新款
-					秋冬季韩国黑色羊毛围巾披肩女纯色韩版两用超长</a>
-			</div>
-			<div class="col-xs-3 col-md-3">
-				<a href="goodsInfo.jsp"><img id="r2" src="image/c2.png"
-					alt="..." class="img-thumbnail"></a> <strong>￥280.00 </strong><strong
-					class="s1">销量：500</strong><br> <a href="goodsInfo.jsp">润帛2015新款
-					秋冬季韩国黑色羊毛围巾披肩女纯色韩版两用超长</a>
-			</div>
-			<div class="col-xs-3 col-md-3 d1">
-				<a href="goodsInfo.jsp"><img id="r3" src="image/c3.png"
-					alt="..." class="img-thumbnail"></a> <strong>￥280.00 </strong><strong
-					class="s1">销量：500</strong><br> <a href="goodsInfo.jsp">润帛2015新款
-					秋冬季韩国黑色羊毛围巾披肩女纯色韩版两用超长</a>
-			</div>
-			<div class="col-xs-3 col-md-3">
-				<a href="goodsInfo.jsp"><img id="r4" src="image/c4.png"
-					alt="..." class="img-thumbnail"></a> <strong>￥280.00 </strong><strong
-					class="s1">销量：500</strong><br> <a href="goodsInfo.jsp">润帛2015新款
-					秋冬季韩国黑色羊毛围巾披肩女纯色韩版两用超长</a>
-			</div>
-		</div>
+	
+	
 	</div>
 
 

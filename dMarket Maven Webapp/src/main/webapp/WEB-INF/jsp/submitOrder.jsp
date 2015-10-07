@@ -45,6 +45,7 @@
 							<th>所在仓库</th>
 							<th>单价</th>
 							<th>数量</th>
+							<th>小计</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,8 +54,9 @@
 							<tr>
 								<td>${i.key.name }</td>
 								<td>${i.key.repertory }</td>
-								<td>${i.value }</td>
 								<td>${i.key.price }</td>
+								<td>${i.value }</td>
+								<td>${i.key.price * i.value }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -62,9 +64,6 @@
 				</table>
 			</div>
 		</div>
-
-
-
 
 
 		<div class="receive panel panel-danger">
@@ -114,15 +113,13 @@
 									</div>
 								</div>
 							</div>
-						</div>
-
-
+						</div> <br> <br> <br>
 						<div class="receiver">
-							<ul>
-								<c:forEach var="r" items="${receiverList }">
-									<li>${r.name },${r.address }, ${r.telephone }</li>
-								</c:forEach>
-							</ul>
+							<c:forEach var="r" items="${receiverList }">
+								<input name="rid" type="radio" multiple="" id="rid"
+									value="${r.receiver_id }" />  ${r.name },${r.address }, ${r.telephone }
+								<br>
+							</c:forEach>
 						</div>
 					</li>
 				</ul>
@@ -131,19 +128,11 @@
 
 
 
-		<div class="wrap">
-			<div class="col-lg-9 panel panel-danger">
+		<div class="wrap" style="align:right">
+			<div class="col-lg-3 folatRight panel panel-info" style="margin-left: 80%;"> 
 				<div class="panel-body">
-					<h1>确认收货地址</h1>
-					<span>收货人1 </span><span>收货地址1 </span><span>联系方式1 </span>
-				</div>
-			</div>
-			<div class="col-lg-3 folatRight panel panel-info">
-				<div class="panel-body">
-					<p>商品总计：</p>
-					<p>运费:</p>
-					<p>应付总额（含运费）:</p>
-					<button type="submit" class="btn btn-success btn-lg ">提交订单</button>
+					<button onclick="buyNow()" type="submit"
+						class="btn btn-success btn-lg ">提交订单</button>
 				</div>
 			</div>
 		</div>
@@ -168,17 +157,21 @@
 
 		function addReceiverXHR() {
 
-			/* $.post("http://www.baidu.com", {
-					"uid" : '${user.user_id}',
-					"name" : $("#name").val(),
-					"place" : $("#place").val(),
-					"tel" : $("#tel").val()
-				}, function(date) {
-					alert(date);
-				});  */
-			alert($("#name").val());
+			$.post("addReceiverPost", {
+				"uid" : '${user.user_id}',
+				"name" : $("#name").val(),
+				"place" : $("#place").val(),
+				"tel" : $("#tel").val()
+			}, function(date) {
+				alert("新增成功，请刷新");
+			});
+		};
 
-		}
+		function buyNow() {
+			var rid = $("#rid").val();
+			var url = "buyNow?rid=" + rid;
+			window.location.href = url;
+		};
 	</script>
 
 

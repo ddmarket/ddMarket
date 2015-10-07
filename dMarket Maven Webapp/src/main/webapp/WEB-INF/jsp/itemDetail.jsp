@@ -242,8 +242,8 @@ hr {
 						</div>
 					</div>
 
-					<div id="gotoCart">
-						<button id="shoppingBtn" type="button" onclick="gotoCart()"
+					<div id="submitOrder">
+						<button id="shoppingBtn" type="button" onclick="submitOrder()"
 							class="btn btn-danger btn4">
 							<img src="image/shopping.png">去结算
 						</button>
@@ -290,8 +290,8 @@ hr {
 				window.location.href = url;
 			};
 
-			function gotoCart() {
-				window.location.href = "gotoCart";
+			function submitOrder() {
+				window.location.href = "submitOrder";
 			};
 		</script>
 </body>

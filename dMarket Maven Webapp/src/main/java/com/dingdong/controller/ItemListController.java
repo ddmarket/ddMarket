@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.dingdong.pojo.Item;
 import com.dingdong.pojo.Order;
 import com.dingdong.pojo.OrderDetail;
@@ -48,10 +50,10 @@ public class ItemListController {
 		request.setAttribute("itemList", itemList);
 		return "list";
 	}
-	
-	
+
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String searchList(@RequestParam String key,HttpServletRequest request) {
+	public String searchList(@RequestParam String key,
+			HttpServletRequest request) {
 		int currentPage = 0;
 		ItemService service = new ItemService();
 		Page page = new Page();
@@ -74,13 +76,35 @@ public class ItemListController {
 
 	// 商品详情显示
 	@RequestMapping(value = "/orderDetail", method = RequestMethod.GET)
-	public String orderDetail(HttpServletRequest request) {
+	public String orderDetail(@RequestParam String oid,HttpServletRequest request) {
+		OrderService orderService = new OrderService();
+		Order order = orderService.findOrderByID(oid);
+		
+		OrderDetailService  orderDetailService = new OrderDetailService();
+		List<OrderDetail> orderDetailList = orderDetailService.findOrderDetailsByOrderID(order.getOrder_id()+"");
+		Map<OrderDetail,Item> orderItemMap = new HashMap<OrderDetail, Item>();
+		ItemService itemService = new ItemService();
+		for(OrderDetail d:orderDetailList){
+			Item i = itemService.findItemByID(d.getItem_id());
+			orderItemMap.put(d, i);
+		}
+		request.setAttribute("order", order);
+		request.setAttribute("orderItemMap", orderItemMap);
 		return "orderDetail";
 	}
 
 	// 商品订单结算GET
 	@RequestMapping(value = "/submitOrder", method = RequestMethod.GET)
 	public String submitOrder(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "login";
+		}
+		ReceiverService receiverService = new ReceiverService();
+		ArrayList<Receiver> receiverList = new ArrayList<Receiver>();
+		receiverList = (ArrayList<Receiver>) receiverService.findReceiverByUserID(user.getUser_id());
+		session.setAttribute("receiverList", receiverList);
 		return "submitOrder";
 	}
 
@@ -92,19 +116,20 @@ public class ItemListController {
 		int iid = Integer.parseInt(id);
 		HttpSession session = request.getSession();
 		// cart 中分别存储了 商品id和商品数量
-		Map<Item, Integer> cart = (Map<Item, Integer>) session.getAttribute("cart");
+		Map<Item, Integer> cart = (Map<Item, Integer>) session
+				.getAttribute("cart");
 
 		Item item = new ItemService().findItemByID(iid);
 		if (cart == null) {
 			cart = new HashMap();
 			cart.put(item, inum);
-		}  else{
-			for(Item i : cart.keySet()){
-				if(i.getItem_id() == iid){
-					cart.put(i, inum+cart.get(i));
+		} else {
+			for (Item i : cart.keySet()) {
+				if (i.getItem_id() == iid) {
+					cart.put(i, inum + cart.get(i));
 					session.setAttribute("cart", cart);
 					return "redirect:itemDetail?iid=" + iid;
-				}	
+				}
 			}
 			cart.put(item, inum);
 		}
@@ -113,10 +138,9 @@ public class ItemListController {
 		return "redirect:itemDetail?iid=" + iid;
 	}
 
-	// 添加购物车信息到session
-	@RequestMapping(value = "/gotoCart")
-	public String myCart(HttpServletRequest request) {
-		// TODO 使用过滤器完成此项工作
+	// 购买
+	@RequestMapping(value = "/buyNow")
+	public String myCart(@RequestParam String rid,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
@@ -126,8 +150,6 @@ public class ItemListController {
 		ArrayList<Receiver> receiverList = new ArrayList<Receiver>();
 		receiverService.findReceiverByUserID(user.getUser_id());
 		session.setAttribute("receiverList", receiverList);
-		
-		@SuppressWarnings("unchecked")
 		Map<Item, Integer> cart = (Map<Item, Integer>) session
 				.getAttribute("cart");
 		if (cart == null) {
@@ -135,13 +157,11 @@ public class ItemListController {
 		}
 		ItemService itemService = new ItemService();
 		OrderService orderService = new OrderService();
-
 		Order order = new Order();
 		order.setExpressinfo("订单已接受");
 		order.setOrderstates(1);
 		order.setOrdertime(new Date());
-		// TODO 收货人已写死
-		order.setReceiver_id(1);
+		order.setReceiver_id(Integer.parseInt(rid));
 		order.setUser_id(user.getUser_id());
 		order.setTotalamount(0l);
 		orderService.createOrder(order);
@@ -155,14 +175,14 @@ public class ItemListController {
 			// 数量小计
 			int num = cart.get(item);
 			orderDetail.setAccount(num);
-			orderDetail.setAmount(num*item.getPrice());
+			orderDetail.setAmount(num * item.getPrice());
 			// 商品数量小计，暂空
 			// orderDetail.setAmount(amount);
 			new OrderDetailService().createOrderDetail(orderDetail);
 			System.out.println("新增订单详表记录");
 		}
-
-		return "submitOrder";
+		session.removeAttribute("cart");
+		return "home";
 	}
 
 }
